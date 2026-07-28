@@ -7,12 +7,12 @@ body {
 :root{
   --teal: #3F5955;
   --light-teal: #5F7A75;
+  --transparent-teal: #3F595580;
   --offWhite: #F6F6F6;
-  --primary:rgb(56, 56, 56);
   --secondary:#abb8c3;
  --burnished-gold: #b8860b;
  --light-gold: #E6C76A;
---transparent-gold: #E6C76A80
+--transparent-gold: #E6C76A80;
 }
 h1{
   font-family: "Michroma", sans-serif;
@@ -23,33 +23,46 @@ h1{
 }
 .sub-heading{
   font-family: "Cormorant", serif;
-  font-weight: 400;
+  font-weight: 600;
 }
 section > .container-fluid, footer > .container-fluid{
   padding:5% 7%;
 }
+.homeBadge, .homeBadgeParent{
+   color: var(--light-gold);
+  text-transform: uppercase;
+  font-size: 1rem;   
+  white-space: nowrap;
+  font-weight:bold;
+}
 .homeBadgeParent{
   background-color: var(--transparent-gold);
-  color: var(--light-gold);
-  text-transform: uppercase;
+ 
   padding: 3px 12px;
   border-radius: 20px;
   margin-top: 8px;
-  font-weight:bold;
+  
   width: fit-content;
  
-  font-size: 0.75rem;   
-  white-space: nowrap;
+  
   
 }
+
 p.subtopic {
     font-size: 20px; /* bigger than body text */
-    font-weight: 500; /* slightly bolder, optional */
+    font-weight: 300; /* slightly bolder, optional */
     margin-top: 10px;
     margin-bottom: 15px;
 }
 
 /* button buttn */
+.borderlessbtn{
+  background: none;
+  border: none;
+  margin: 0;
+  padding: 0;
+  color: var(--burnished-gold);
+}
 .btn{
   text-transform: capitalize;
    white-space: nowrap;
@@ -57,10 +70,19 @@ p.subtopic {
    margin-bottom: 10px;
    color:white;
 } 
+.btnAlternate, .btnAlternate:hover{
+  border: 1px solid white;
+}
 .btnPrimary, .btnPrimary:hover{
   background: var(--burnished-gold);
   
 }
+.btn-xl {
+  padding: 1rem 2rem;
+  font-size: 1.5rem;
+  border-radius: 0.5rem;
+}
+
 /* nav--nav--nav--nav--nav--nav--nav--nav--nav--nav--nav--nav--nav--nav */
 nav{
   text-transform: capitalize;
@@ -83,20 +105,71 @@ nav .container-fluid{
 
 /* hero-section hero-section hero-section */
 #hero{
-  background-image: url('./asset/LivingRoom1.png');
+  background: linear-gradient(
+  to right,
+  var(--teal),
+  transparent 200% 
+), url('./asset/LivingRoom1.png');
+
+
   background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;
   color:white;
+  position: relative;
+  padding-bottom: 120px;
+  min-height:80vh;
   
   
 }
-#hero .container-fluid{
-  color: var(--ivory);
-  min-height: 80vh;
-  background: linear-gradient(
-  to right,
-  var(--light-teal),
-  transparent 200% 
+
+
+
+.card-row {
+  margin-top: -100px;
+  position: relative;
+    
+  padding: 0 7%;
+  z-index: 10;
+
+ 
+  transform: translateY(20%);
+}
+@media (max-width: 768px) {
+
+     .card-row {
+        position: static;
+        transform: none;
+        
+    }
+    #welcome{
+      padding-top:0;
+    }
+}
+ .hero-cards{
+  border-radius: 10px;
+  background-color: white;
+  padding: 30px;
+  margin:10px;
+  box-shadow: 0 2px 8px var(--secondary);
+  z-index:20;
+ }
+ .hero-card-icon{
+  font-size: 1.5rem;
+  padding:10px 20px;
+  background-color:#F0F8FF ;
+  border-radius: 5px;
+  width: fit-content;
+  margin-bottom: 10px;
   
-);}
+ }
+
+ /* welcome welcome welcome */
+ #welcome{
+  padding-top: 120px;
+ }
+ /* apartments apartmets */
+ #apartments{
+  background-color: var(--offWhite);
+ 
+ }

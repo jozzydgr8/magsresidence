@@ -4,14 +4,14 @@ export const Hero =()=>{
     return(
         <section id="hero">
             <div className="container-fluid">
-                <div className="col-md-8">
-                    <div className='homeBadgeParent'><StarFilled /> <StarFilled /> <StarFilled />
-                     <StarFilled /> <StarFilled />  Premium Serviced Apartment
+                <div className="row">
+                    <div className="col-md-8">
+                    <div className='homeBadgeParent'><StarFilled /> <StarFilled /> <StarFilled /> <StarFilled /> <StarFilled />  Premium Serviced Apartment
                      </div>
                      <br/>
                     <h1>
-                        Your <span style={{ color: 'var(--burnished-gold)' }}>Home Away</span><br/>
-                        From Home
+                        A <span style={{ color: 'var(--burnished-gold)' }}>Home Of</span><br/>
+                        Comfort
                     </h1>
                     <br/>
                     <p className='subtopic'>
@@ -30,12 +30,29 @@ export const Hero =()=>{
                             <small style={{display:"flex", gap:'12px'}}><TeamOutlined/> 200+ Happy Guests</small>
                         </div>
                         
-                        <div className='col-md-6'style={{marginTop:"10px"}}><FlatButton className=" btn btnPrimary" title="Book Now"/> </div>
-                        <div className='col-md-6'style={{marginTop:"10px"}}></div>
 
                     </div>
+                    <br/>
+
+                    
+                    <FlatButton className=" btn btn-xl btnPrimary" title="Book Now"/> 
+                    <FlatButton className=" btn btn-xl btnAlternate" title="View Apartments"/>
                 </div>
+                </div>
+
+
+
+
+
+
+
+
+
+
+                
             </div>
+
+            
         </section>
     )
 }
