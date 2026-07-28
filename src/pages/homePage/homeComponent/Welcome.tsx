@@ -12,13 +12,13 @@ export const Welcome = ()=>{
     return(
         <section id='welcome'>
             <div className="container-fluid">
-                <div className="row mb-2">
-                    <div className="col-md-6">
+                <div className="row ">
+                    <div className="col-md-6 mb-2">
                         <div style={{backgroundImage:`url(${parlourImage})`, backgroundSize:'cover', backgroundPosition:'center', minHeight:'500px', borderRadius:'10px'}}>
 
                         </div>
                     </div>
-                    <div className="col-md-6">
+                    <div className="col-md-6 mb-2">
                         <p className="homeBadge">WELCOME TO MAGS RESIDENCE</p>
                         <h2 className="sub-heading" style={{color:'var(--teal)'}}>More Than Just a Place to Stay</h2><br/>
                         <p>
@@ -29,19 +29,19 @@ export const Welcome = ()=>{
 
                         <div>
                             <div className="row">
-                                <div className="col-md-4">
+                                <div className="col-md-4 mb-2">
                                     <div style={tag}>
                                         <EnvironmentOutlined style={iconStyle}/>
                                         <small>Prime Location</small>
                                     </div>
                                 </div>
-                                <div className="col-md-4">
+                                <div className="col-md-4 mb-2">
                                     <div style={tag}>
                                         <CoffeeOutlined style={iconStyle}/>
                                         <small>Premium Amenities</small>
                                     </div>
                                 </div>
-                                <div className="col-md-4">
+                                <div className="col-md-4 mb-2">
                                     <div style={tag}>
                                         <PlaySquareOutlined style={iconStyle}/>
                                         <small>Smart Entertainment</small>

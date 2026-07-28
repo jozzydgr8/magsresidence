@@ -20,13 +20,13 @@ export const Hero =()=>{
                           — arrive, settle in, and feel at home.
                     </p>
                     <div className='row'>
-                        <div className="col-md-4 col-sm-6">
+                        <div className="col-md-4 col-sm-6 mb-2">
                             <small style={{display:"flex", gap:'12px'}}><SafetyOutlined/> 24/7 Guest Support</small>
                         </div>
-                        <div className="col-md-4 col-sm-6">
+                        <div className="col-md-4 col-sm-6 mb-2">
                             <small style={{display:"flex", gap:'12px'}}><ClockCircleOutlined/> Flexible Stays</small>
                         </div>
-                        <div className="col-md-4 col-sm-6">
+                        <div className="col-md-4 col-sm-6 mb-2">
                             <small style={{display:"flex", gap:'12px'}}><TeamOutlined/> 200+ Happy Guests</small>
                         </div>
                         
