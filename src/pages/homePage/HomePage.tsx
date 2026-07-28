@@ -1,5 +1,7 @@
 import { Apartments } from "./homeComponent/Apartments"
+import { Choose } from "./homeComponent/Choose"
 import { Hero } from "./homeComponent/Hero"
+import { Offering } from "./homeComponent/Offering"
 import { OverLapHeroCard } from "./homeComponent/OverLapHeroCard"
 import { Welcome } from "./homeComponent/Welcome"
 
@@ -10,6 +12,8 @@ export const HomePage = ()=>{
         <OverLapHeroCard/>
         <Welcome/>
         <Apartments/>
+        <Offering/>
+        <Choose/>
         </>
     )
 }

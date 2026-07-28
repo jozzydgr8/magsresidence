@@ -5,9 +5,12 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 :root{
-  --teal: #3F5955;
+  --teal: #314744;
   --light-teal: #5F7A75;
+  --medium-teal:#4c6461;
   --transparent-teal: #3F595580;
+  
+
   --offWhite: #F6F6F6;
   --secondary:#abb8c3;
  --burnished-gold: #b8860b;
@@ -172,4 +175,15 @@ nav .container-fluid{
  #apartments{
   background-color: var(--offWhite);
  
+ }
+ /* offering--offering--offering */
+ #offering{
+  background-color: var(--teal);
+  color:white;
+ }
+ .amenities-content{
+  padding:30px;
+  background:var(--medium-teal);
+  border: solid 1px var(--light-teal);
+  border-radius: 10px;
  }
