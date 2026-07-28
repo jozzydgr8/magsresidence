@@ -12,7 +12,7 @@ export const Welcome = ()=>{
     return(
         <section id='welcome'>
             <div className="container-fluid">
-                <div className="row">
+                <div className="row mb-2">
                     <div className="col-md-6">
                         <div style={{backgroundImage:`url(${parlourImage})`, backgroundSize:'cover', backgroundPosition:'center', minHeight:'500px', borderRadius:'10px'}}>
 
