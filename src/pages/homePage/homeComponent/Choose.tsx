@@ -49,17 +49,19 @@ export const Choose = ()=>{
     }}
 >
     <div
+    className="chooseImage"
         style={{
             backgroundImage: `url(${roomImage})`,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
-            minHeight: '600px',
+            
             borderRadius: '10px',
             boxShadow: '0 10px 30px var(--secondary)'
         }}
     />
 
     <div
+    className="chooseImageTwo"
         style={{
             position: 'absolute',
             backgroundImage:`url(${roomImage2})`,
@@ -68,7 +70,7 @@ export const Choose = ()=>{
             bottom: '0',
             left: '0',
             width: '50%',
-            height: '200px',
+            
             zIndex: 2,
             borderRadius:"10px",
             boxShadow: '0 10px 30px var(--secondary)'

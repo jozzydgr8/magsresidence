@@ -14,7 +14,7 @@ export const Welcome = ()=>{
             <div className="container-fluid">
                 <div className="row ">
                     <div className="col-md-6 mb-2">
-                        <div style={{boxShadow: '0 10px 30px var(--secondary)', backgroundImage:`url(${parlourImage})`, backgroundSize:'cover', backgroundPosition:'center', minHeight:'500px', borderRadius:'10px'}}>
+                        <div className="welcomeImage" style={{boxShadow: '0 10px 30px var(--secondary)', backgroundImage:`url(${parlourImage})`, backgroundSize:'cover', backgroundPosition:'center',  borderRadius:'10px'}}>
 
                         </div>
                     </div>

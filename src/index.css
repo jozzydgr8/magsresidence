@@ -171,6 +171,21 @@ nav .container-fluid{
  #welcome{
   padding-top: 30px;
  }
+ .welcomeImage, .chooseImage{
+  min-height: 500px;
+ }
+ .chooseImageTwo{
+  height:200px;
+ }
+
+ @media (max-width:750px) {
+    .welcomeImage, .chooseImage{
+      min-height:200px
+    }
+    .chooseImageTwo{
+      height:100px
+    }
+ }
  /* apartments apartmets */
  #apartments{
   background-color: var(--offWhite);
