@@ -374,7 +374,7 @@ nav .container-fluid{
 }
 /* Textarea */
 textarea.ant-input {
-  min-height: 100px !important;
+  min-height: 150px !important;
   height: auto !important;
   padding: 12px !important;
   resize: none;
