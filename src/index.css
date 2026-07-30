@@ -207,6 +207,34 @@ nav .container-fluid{
   border-radius: 10px;
  }
 
+ /* footer footer footer footer */
+footer{
+  background-color: var(--teal);
+  color:white;
+}
+
+footer img{
+  width:50%;
+}
+@media (max-width:750px) {
+  footer img{
+    width: 30%;
+  }
+}
+
+
+footer a {
+  display: block;
+  color:inherit;
+  text-decoration: none;
+  margin-bottom: 8px;
+}
+
+footer h3{
+  color:var(--burnished-gold)
+}
+
+
  /* loading loader */
 .loader {
   width: 48px;
