@@ -76,6 +76,10 @@ p.subtopic {
 .btnAlternate, .btnAlternate:hover{
   border: 1px solid white;
 }
+.btnSuccess, .btnSuccess:hover{
+  background: var(--teal);
+  color:white;
+}
 .btnPrimary, .btnPrimary:hover{
   background: var(--burnished-gold);
   
@@ -202,3 +206,248 @@ nav .container-fluid{
   border: solid 1px var(--light-teal);
   border-radius: 10px;
  }
+
+ /* loading loader */
+.loader {
+  width: 48px;
+  height: 48px;
+  border: 3px solid var(--electric-teal);
+  border-radius: 50%;
+  display: inline-block;
+  position: relative;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
+.loader::after {
+  content: '';  
+  box-sizing: border-box;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 3px solid;
+  border-color: var(--burnished-gold) transparent;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+} 
+
+
+/* animation animation animation animation animation animation */
+.sectionAnimationLeft{
+  scroll-behavior: smooth;
+  animation: backInLeft;
+  animation-duration: 1.5s;
+}
+.sectionAnimationDown{
+  scroll-behavior: smooth;
+  animation:fadeInDownBig;
+  animation-duration: 1.2s;
+}
+
+.sectionAnimationUp{
+  scroll-behavior: smooth;
+  animation:fadeInUpBig;
+  animation-duration: 1.2s;
+
+}
+.sectionAnimationRight{
+  scroll-behavior: smooth;
+  animation: backInRight;
+  animation-duration: 1.2s;
+}
+
+
+/* Remove blue glow and focus box shadow for all AntD inputs */
+/* Base picker styling */
+.ant-picker {
+  height: 40px !important;
+  padding: 8px 12px !important;
+  font-size: 16px !important;
+  line-height: 1.5 !important;
+  border: 1px solid #d9d9d9 !important;
+  border-radius: 6px !important;
+  box-shadow: none !important;
+  outline: none !important;
+  transition: none !important;
+  display: flex;
+  align-items: center;
+}
+
+/* Remove default blue glow and box shadow on focus */
+.ant-picker-focused,
+.ant-picker:hover,
+.ant-picker:focus {
+  border-color: #d9d9d9 !important;
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+/* Input inside picker */
+.ant-picker input {
+  font-size: 16px !important;
+  padding: 0 !important; /* handled by container */
+  height: 100% !important;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  background: transparent !important;
+}
+
+/* Placeholder text styling */
+.ant-picker input::placeholder {
+  color: #999;
+  opacity: 1; /* to ensure consistent placeholder color */
+}
+
+/* Clear icon */
+.ant-picker-clear {
+  margin-right: 8px !important;
+}
+
+/* Suffix Icon (calendar / clock icon) */
+.ant-picker-suffix {
+  font-size: 18px !important;
+  color: #999;
+  padding-left: 8px !important;
+  display: flex;
+  align-items: center;
+}
+
+/* Dropdown panel (optional: you can style popup panel) */
+.ant-picker-dropdown {
+  border-radius: 6px !important;
+}
+
+/* Remove hover glow on dropdown triggers */
+.ant-picker:hover .ant-picker-input > input {
+  border-color: #d9d9d9 !important;
+  box-shadow: none !important;
+}
+
+/* If you want to style TimePicker panel similarly */
+.ant-picker-time-panel {
+  font-size: 16px !important;
+}
+
+.ant-input:focus,
+.ant-input-focused,
+.ant-input-affix-wrapper:focus,
+.ant-input-affix-wrapper-focused {
+  box-shadow: none !important;
+  outline: none !important;
+  border-color: #d9d9d9 !important; /* Optional: reset to default gray border */
+}
+
+/* Optional: Prevent padding shift if you're using Affix (prefix/suffix icons) */
+/* Remove focus and hover effects on all Ant Design inputs */
+.ant-input,
+.ant-input-affix-wrapper,
+.ant-input:hover,
+.ant-input:focus,
+.ant-input-focused,
+.ant-input-affix-wrapper:hover,
+.ant-input-affix-wrapper:focus,
+.ant-input-affix-wrapper-focused {
+  box-shadow: none !important;
+  outline: none !important;
+  border-color: #d9d9d9 !important; /* Reset to default or your custom color */
+}
+
+/* For TextArea */
+.ant-input-textarea,
+.ant-input-textarea:hover,
+.ant-input-textarea:focus,
+.ant-input-textarea-focused {
+  box-shadow: none !important;
+  outline: none !important;
+  border-color: #d9d9d9 !important;
+}
+/* Textarea */
+textarea.ant-input {
+  min-height: 100px !important;
+  height: auto !important;
+  padding: 12px !important;
+  resize: none;
+}
+
+/* For Select */
+.ant-select-selector,
+.ant-select-selector:hover,
+.ant-select-focused .ant-select-selector {
+  box-shadow: none !important;
+  border-color: #d9d9d9 !important;
+}
+/* Prevent transitions that may cause "jumps" */
+.ant-input,
+.ant-input-affix-wrapper {
+  transition: none !important;
+}
+.ant-input:hover,
+.ant-input:focus {
+  border-color: #aaa !important;
+}
+
+input,
+textarea,
+.ant-input,
+.ant-input-affix-wrapper input {
+  font-size: 16px !important;
+}
+.ant-input,
+.ant-input-affix-wrapper {
+  height: 40px !important; /* Or whatever height you want */
+  padding: 8px 12px !important;
+  line-height: 1.5 !important;
+}
+
+
+
+/* Style the Input.Password wrapper */
+.ant-input-password {
+  border: 1px solid #d9d9d9 !important;
+  border-radius: 6px !important;
+  padding: 0 !important; /* let inner input handle spacing */
+  height: 40px !important;
+  box-shadow: none !important;
+  display: flex;
+  align-items: center;
+}
+
+/* Style the actual password input inside */
+.ant-input-password input {
+  padding: 8px 12px !important;
+  font-size: 16px !important;
+  height: 100% !important;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* Remove glow or shift on focus/hover */
+.ant-input-password:focus,
+.ant-input-password-focused,
+.ant-input-password:hover {
+  border-color: #d9d9d9 !important;
+  box-shadow: none !important;
+}
+
+/* Optional: fix autofill alignment */
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 1000px white inset !important;
+  box-shadow: 0 0 0 1000px white inset !important;
+}
+.ant-input-password .ant-input-suffix {
+  padding-right: 8px !important; /* or more if you want more space */
+  display: flex;
+  align-items: center;
+}
