@@ -6,7 +6,7 @@ export const OverLapHeroCard =()=>{
                 
                 <div className='row'>
                 <div className="col-md-4 d-flex">
-                    <div className="hero-cards" >
+                    <div className="hero-cards animate-up" >
                         <div className="hero-card-icon"><HomeOutlined /></div>
                         <h3 className="sub-heading">
                             Fully Furnished
@@ -17,7 +17,7 @@ export const OverLapHeroCard =()=>{
                     </div>
                 </div>
                 <div className="col-md-4 d-flex">
-                    <div className="hero-cards" >
+                    <div className="hero-cards animate-up" >
                         <div className="hero-card-icon"><WifiOutlined /></div>
                         <h3 className="sub-heading">
                             Work & Stay Ready
@@ -28,7 +28,7 @@ export const OverLapHeroCard =()=>{
                     </div>
                 </div>
                 <div className="col-md-4 d-flex">
-                    <div className="hero-cards" >
+                    <div className="hero-cards animate-up" >
                         <div className="hero-card-icon"><SafetyOutlined /></div>
                         <h3 className="sub-heading">
                             Secure & Private

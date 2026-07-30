@@ -23,7 +23,7 @@ export const Choose = ()=>{
                         {
                             reason.map((data, index)=>(
                                 <div key={index} style={{display:"flex", alignItems:'center', gap:"10px"}}>
-                                    <div style={iconStyle}>
+                                    <div style={iconStyle} className="animate-left">
                                         {data.id}
                                     </div>
                                     <div>
@@ -42,7 +42,7 @@ export const Choose = ()=>{
 
 
                     <div
-    className="col-md-6"
+    className="col-md-6 animate-right"
     style={{
         position: 'relative',
         paddingBottom: '50px'

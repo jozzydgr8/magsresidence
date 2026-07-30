@@ -18,7 +18,7 @@ export const Offering = ()=>{
                     {
                         amenities.map((data, index)=>(
                             <div key={index} className="col-md-3 mb-2 d-flex">
-                                <div className="amenities-content">
+                                <div className="amenities-content animate-up">
                                     <data.icon style={iconStyle}/>
                                     <br/><br/>
                                     <h3 className="subheading">{data.title}</h3>
@@ -30,7 +30,7 @@ export const Offering = ()=>{
                 </div>
                 <br/>
                 <div className="text-center">
-                    <FlatButton title="Explore All Amenities" className="borderlessbtn" icon={<RightOutlined/>}/>
+                    <FlatButton title="Explore All Amenities" className="animate-up borderlessbtn" icon={<RightOutlined/>}/>
                 </div>
             </div>
         </section>

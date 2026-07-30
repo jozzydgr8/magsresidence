@@ -5,6 +5,7 @@ import {PhoneOutlined,FacebookOutlined,WhatsAppOutlined,InstagramOutlined,
 
 import businessLogo from '../../../asset/businessLogo.png'
 import { handleRequest } from '../../../shared/handleRequest';
+import LocationMap from './LocationMap';
 export const Footer = ()=>{
     return(
         <footer>
@@ -62,7 +63,10 @@ export const Footer = ()=>{
                     </div>
                 </div>
                 <hr/>
-                <p>Copyright © {new Date().getFullYear()} Seun Ogunsanya. All rights reserved.</p>
+               <LocationMap
+                    address="Mags Residence, No. 172B Niyi Street, Osubi, Warri, Delta State, Nigeria"
+                />
+                <p>Copyright © {new Date().getFullYear()} Mags Residence. All rights reserved.</p>
                 <small>
                     <a href="https://jozzycodes.com" target="_blank" rel="noopener noreferrer" style={{ color: "#008080" }}>
                     Website created by jozzycodes
