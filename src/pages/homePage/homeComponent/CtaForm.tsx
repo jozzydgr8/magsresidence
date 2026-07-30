@@ -5,15 +5,7 @@ import { FlatButton } from "../../../shared/FlatButton";
 import {SendOutlined} from '@ant-design/icons';
 import { handleRequest } from "../../../shared/handleRequest";
 import { toast } from 'react-toastify';
-import { useState } from "react";
 
-type formValues = {
-    values:{
-    message:string,
-    },
-    resetForm:()=>void,
-
-}
 
 const validationSchema = Yup.object().shape({
    
@@ -41,7 +33,7 @@ export const CtaForm= ()=>{
             message:''
         }}
         validationSchema={validationSchema}
-        onSubmit={(values, resetForm)=>{handleRequest(values.message);}}>
+        onSubmit={(values, resetForm)=>{handleRequest(values.message);toast.success('Thank you for your message!')}}>
             {
                 formik=>{
                     return(
