@@ -8,7 +8,7 @@ type stateType = {
 
 const initialState = {
     user: null,
-    loading: false
+    loading: true
 };
 
 type valueProps = stateType & { dispatch: React.Dispatch<actionType> };

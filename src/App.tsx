@@ -1,11 +1,17 @@
 import React, { useEffect } from 'react';
-import {createBrowserRouter, createRoutesFromChildren, Route, RouterProvider} from 'react-router-dom';
+import {createBrowserRouter, createRoutesFromChildren, Outlet, Route, RouterProvider} from 'react-router-dom';
 import { Layout } from './Layout';
 import { HomePage } from './pages/homePage/HomePage';
 import { ToastContainer } from 'react-toastify';
 import { UseDataContext } from './context/UseDataContext';
 import { UseAuthContext } from './context/UseAuthContext';
 import { Loading } from './shared/Loading';
+import { AdminLayout } from './admin/AdminLayout';
+import { Dashboard } from './admin/Pages/Dashboard/Dashboard';
+import { ProtectedRoutes } from './shared/ProtectedRoutes';
+import { AddApartment } from './admin/Pages/apartment/AddApartment';
+import { GuestRoutes } from './shared/GuestRoutes';
+import Session from './admin/Pages/Session';
 
 
 function App() {
@@ -35,14 +41,55 @@ function App() {
     
   },[dispatch]);
 
+  
+  //useffect for authentication
+useEffect(() => {
+  handle({ type: 'loading', payload: true });
+
+  const data = localStorage.getItem('user');
+  if (data) {
+    try {
+      const parsed = JSON.parse(data);
+      const now = new Date().getTime();
+      const expiryDays = 3;
+      const expiryTime = expiryDays * 24 * 60 * 60 * 1000; // days to ms
+
+      if (now - parsed.savedAt < expiryTime) {
+        // Not expired
+        handle({ type: 'getUser', payload: parsed.user });
+      } else {
+        // Expired
+        localStorage.removeItem('user');
+      }
+    } catch (e) {
+      console.error('Failed to parse user data:', e);
+      localStorage.removeItem('user');
+    }
+  }
+
+  handle({ type: 'loading', payload: false });
+}, [handle]);
+
     if(loading || authLoading){
     return <Loading/>
   }
   const router = createBrowserRouter(createRoutesFromChildren(
+    <>
     <Route path='/' element={<Layout />}>
       <Route index element={<HomePage />} />
 
     </Route>
+    <Route path='/admin_jctbdil1$' element={<AdminLayout/>}>
+      <Route index element={<Dashboard/>}/>
+      <Route path='apartments' element={<ProtectedRoutes user={user}><Outlet/></ProtectedRoutes>}>
+        <Route path='addapartments' element={<AddApartment/>} />
+        
+      </Route>
+
+
+         <Route path='session' element={<GuestRoutes user={user}><Session/></GuestRoutes>}/>
+    </Route>
+    </>
   ))
   return (
     <div className="App">
