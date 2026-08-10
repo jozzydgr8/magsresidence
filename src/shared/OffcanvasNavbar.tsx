@@ -83,7 +83,7 @@ export const OffcanvasNavbar = () => {
                     <NavLink
                       onClick={handleNavLinkClick}
                       className="dropdown-item"
-                      to="/admin_jctbdil1$/apartment/addApartment"
+                      to="/admin_jctbdil1$/apartments/addapartments"
                     >
                       Add New Apartment <PlusOutlined />
                     </NavLink>

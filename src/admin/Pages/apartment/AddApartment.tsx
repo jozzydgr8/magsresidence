@@ -4,13 +4,13 @@ import { FlatButton } from "../../../shared/FlatButton";
 import { useState } from "react";
 import { UploadOutlined } from '@ant-design/icons';
 import type { UploadFile } from "antd/es/upload/interface";
-// import { ApartmentHooks } from "../../Hooks/ApartmentHooks";
+ import { ApartmentHooks } from "../../Hooks/ApartmentHooks";
 import * as Yup from 'yup';
 
 export const AddApartment = () => {
   const [fileList, setFileList] = useState<UploadFile[]>([]);
   const [loading, setLoading] = useState(false);
-  // const { postApartment } = ApartmentHooks();
+   const { postApartment } = ApartmentHooks();
 
   const beforeUpload = () => false;
 
@@ -34,7 +34,7 @@ export const AddApartment = () => {
         <h2>Add New Apartment</h2>
         <Formik
           initialValues={{
-            title: '', category: "", description: "", cost: '', image: '', featured: false
+            title: '', category: "", description: "", cost: '', images: []
           }}
           validationSchema={validationSchema}
           onSubmit={(values, { resetForm }) => {
@@ -43,7 +43,8 @@ export const AddApartment = () => {
               alert("Please upload a featured image!"); // Or use your toast handler
               return;
             }
-            // postApartment({ values, setFileList, fileList, setLoading, resetForm });
+            
+             postApartment({ values, setFileList, fileList, setLoading, resetForm });
           }}
         >
           {(formik) => (
@@ -82,7 +83,7 @@ export const AddApartment = () => {
                 />
               </Form.Item>
 
-              {/* READING TIME */}
+              {/* COST */}
               <Form.Item 
                 label="Cost Per Day"
                 validateStatus={formik.errors.cost && formik.touched.cost ? "error" : ""}
@@ -103,8 +104,8 @@ export const AddApartment = () => {
               <Form.Item label="Upload Images">
                 <Upload.Dragger
                   accept="image/*"
-                  multiple={false}
-                  maxCount={1}
+                  multiple={true}
+                  maxCount={3}
                   fileList={fileList}
                   onChange={handleFileChange}
                   beforeUpload={beforeUpload}
