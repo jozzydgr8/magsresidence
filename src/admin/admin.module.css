@@ -1,0 +1,35 @@
+/* product list  */
+.apartmentcontainer{
+  width:400px;
+   box-shadow: 0 2px 8px var(--secondary);
+  margin: 15px 8px;
+  padding:30px;
+  border-radius: 15px;
+}
+
+.scrollablediv{
+  padding: 15px;
+  height:200px;
+  overflow-y: auto;
+  
+   border-radius: 15px;
+   margin-bottom: 20px;
+}
+.scrollablediv > div{
+    border-bottom: solid 1px var(--deep-dark-teal);
+    border-radius: 7px;
+    padding: 10px;
+}
+.scrollablediv::-webkit-scrollbar {
+  width: 6px;           
+}
+
+.scrollablediv::-webkit-scrollbar-track {
+  background: #f1f1f1;  
+}
+
+.scrollablediv::-webkit-scrollbar-thumb {
+  background-color: #999;   
+  border-radius: 15px;       
+  border: 1px solid transparent;
+}
