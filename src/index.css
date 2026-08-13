@@ -153,12 +153,15 @@ nav .container-fluid{
       padding-top:0;
     }
 }
- .hero-cards{
+ .hero-cards, .apartment-card{
   border-radius: 10px;
   background-color: white;
+  box-shadow: 0 2px 8px var(--secondary);
+  
+ }
+ .hero-cards{
   padding: 30px;
   margin:10px;
-  box-shadow: 0 2px 8px var(--secondary);
   z-index:20;
  }
  .hero-card-icon{
@@ -194,6 +197,10 @@ nav .container-fluid{
  #apartments{
   background-color: var(--offWhite);
  
+ }
+
+ .apartment-card{
+
  }
  /* offering--offering--offering */
  #offering{

@@ -23,7 +23,7 @@ function App() {
     dispatch({type:"loading", payload:true});
     const fetchData = async ()=>{
       try{
-        const response = await fetch('https://magsresidenceserver.vercel.app/apartments');
+        const response = await fetch('https://magsresidenceserver.vercel.app/apartment');
         if(!response.ok){
           throw new Error('Failed to fetch data');
         }
@@ -80,7 +80,7 @@ useEffect(() => {
 
     </Route>
     <Route path='/admin_jctbdil1$' element={<AdminLayout/>}>
-      <Route index element={<Dashboard/>}/>
+      <Route index element={<ProtectedRoutes user={user}><Dashboard/></ProtectedRoutes>}/>
       <Route path='apartments' element={<ProtectedRoutes user={user}><Outlet/></ProtectedRoutes>}>
         <Route path='addapartments' element={<AddApartment/>} />
         
