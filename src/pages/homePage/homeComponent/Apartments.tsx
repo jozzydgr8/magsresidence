@@ -16,7 +16,7 @@ export const Apartments = ()=>{
             
             {
                 Apartments?.map(data=>(
-                    <div className="col-md-4 mt-4" key={data._id}>
+                    <div className="col-md-4 mt-4 animate-up" key={data._id}>
                         <div className="apartment-card h-100 text-start ">
                             <div style={{backgroundImage:`url(${data.images[0].url})`,
                          backgroundSize:'cover', height:'300px', backgroundPosition:'center center', borderTopRightRadius:"10px", borderTopLeftRadius:"10px"}}></div>
@@ -34,7 +34,7 @@ export const Apartments = ()=>{
             </div>
 
 
-            <FlatButton title="View all apartment" className="btn btnSuccess mt-4 btn-lg"/>
+            <FlatButton title="View all apartment" className="animate-up btn btnSuccess mt-4 btn-lg"/>
             </div>
 
         </div>
