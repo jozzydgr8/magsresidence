@@ -8,8 +8,8 @@ import { UseAuthContext } from "../../context/UseAuthContext";
 
 type updateprops={
     values:any,
-    category:string,
-    title:string, description:string, image:UploadFile[], cost:string, 
+   
+    title:string, description:string, cost:string, 
     _id:string,
     fileList: UploadFile<any>[],
     handleCloseModal:()=>void,
@@ -18,7 +18,7 @@ type updateprops={
 
 interface ApartmentFormValues {
   title: string;
-  category: string;
+
   description: string;
   cost: string;
   images: UploadFile[];
@@ -109,53 +109,85 @@ export const ApartmentHooks = ()=>{
     }
 
 
-    const updateApartment = async ({handleCloseModal,values,fileList,  setLoading, description, title, category,image, cost, _id }:updateprops)=>{
+    const updateApartment = async ({
+  handleCloseModal,
+  values,
+  fileList,
+  setLoading,
+  title,
+  description,
+  cost,
+  _id,
+}: updateprops) => {
+  setLoading(true);
 
-        setLoading(true);
-        const formData = new FormData();
-        const originalApartment = {title, description, category, image, cost};
-        const keys: (keyof typeof originalApartment)[]=['title', 'description', 'category', 'image','cost'];
+  try {
+    const formData = new FormData();
 
-        for (const key of keys){
-            if(values[key] !== undefined && values[key] !== originalApartment[key]){
-                formData.append(key, values[key]);
-            }
-        }
+    if (values.title !== title) {
+      formData.append("title", values.title);
+    }
 
-        fileList.forEach((file) => {
-        if (file.originFileObj) {
-            formData.append("images", file.originFileObj);
-        }
-        });
+    if (values.description !== description) {
+      formData.append("description", values.description);
+    }
 
-       //Fixed: if no data changes, alert the user and safely turn off loading
-       if(!formData.has('images') && formData.keys().next().done){
-            console.log('no changes to submit');
-            setLoading(false);
-            return;
-       }
-        try{
-            const response = await fetch(`https://magsresidenceserver/apartment/${_id}`,{
-                method:"PATCH",
-                headers:{
-                    'Authorization': `Bearer ${user?.token}`
-                },
-                body: formData,
-            });
-            if(!response.ok){
-                throw new Error('failed to update listing');
-            }
-            const json = await response.json();
-            dispatch({type:'updateApartment',payload:json});
-            toast.success('Listing updated successfully');
-            handleCloseModal();
-        }catch(error){
-            console.error("error updating apartment:",error);
-            toast.error('error updating document');
-        }finally{
-            setLoading(false);
-        }
-    };
+    if (values.cost !== String(cost)) {
+      formData.append("cost", values.cost);
+    }
+
+    /*
+     * Only append files that were actually selected/uploaded.
+     * Existing images have no originFileObj.
+     */
+    fileList.forEach((file) => {
+      if (file.originFileObj) {
+        formData.append("images", file.originFileObj);
+      }
+    });
+
+    /*
+     * Don't make an API request if nothing changed.
+     * Using Array.from avoids TypeScript iteration issues in older target configs.
+     */
+    if (Array.from(formData.keys()).length === 0) {
+      toast.info("No changes were made");
+      setLoading(false);
+      return;
+    }
+
+    const response = await fetch(
+      `https://magsresidenceserver.vercel.app/apartment/${_id}`,
+      {
+        method: "PATCH",
+        headers: {
+          Authorization: `Bearer ${user?.token}`,
+        },
+        body: formData,
+      }
+    );
+
+    if (!response.ok) {
+      throw new Error(`Failed to update apartment: ${response.status}`);
+    }
+
+    const json = await response.json();
+
+    dispatch({
+      type: "updateApartment",
+      payload: json,
+    });
+
+    toast.success("Apartment updated successfully");
+
+    handleCloseModal();
+  } catch (error) {
+    console.error("Error updating apartment:", error);
+    toast.error("Error updating apartment");
+  } finally {
+    setLoading(false);
+  }
+};
 
     return {postApartment, deleteApartment, updateApartment}
 }

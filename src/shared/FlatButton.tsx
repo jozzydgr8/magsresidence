@@ -1,7 +1,7 @@
 
 import {JSX} from 'react'
 type buttonProps = {
-    title:string,
+    title?:string,
     onClick?: React.MouseEventHandler<HTMLButtonElement> | (() => void),
     className?:string,
     disabled?:boolean

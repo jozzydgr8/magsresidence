@@ -28,7 +28,7 @@ export const ApartmentListed = ()=>{
                             {apartment.title}
                         </strong>
                         <div>
-                            <NavLink to={`/admin_jctbdil1$/apartment/${apartment._id}`}><FlatButton title="View Apartment" className="btn btnPrimary"/></NavLink>
+                            <NavLink to={`/admin_jctbdil1$/apartments/${apartment._id}`}><FlatButton title="View Apartment" className="btn btnPrimary"/></NavLink>
                         </div>
                     </div>
                    

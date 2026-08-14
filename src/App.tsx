@@ -12,6 +12,7 @@ import { ProtectedRoutes } from './shared/ProtectedRoutes';
 import { AddApartment } from './admin/Pages/apartment/AddApartment';
 import { GuestRoutes } from './shared/GuestRoutes';
 import Session from './admin/Pages/Session';
+import { SingleAdminApartment } from './admin/Pages/apartment/SingleAdminApartment';
 
 
 function App() {
@@ -83,7 +84,7 @@ useEffect(() => {
       <Route index element={<ProtectedRoutes user={user}><Dashboard/></ProtectedRoutes>}/>
       <Route path='apartments' element={<ProtectedRoutes user={user}><Outlet/></ProtectedRoutes>}>
         <Route path='addapartments' element={<AddApartment/>} />
-        
+        <Route path=':id' element={<SingleAdminApartment/>}/>
       </Route>
 
 
