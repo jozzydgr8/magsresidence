@@ -17,6 +17,11 @@ body {
  --light-gold: #E6C76A;
 --transparent-gold: #E6C76A80;
 }
+a{
+  text-decoration: inherit;
+  color: inherit;
+
+}
 h1{
   font-family: "Michroma", sans-serif;
   font-weight: 700;
@@ -27,6 +32,7 @@ h1{
 .sub-heading{
   font-family: "Cormorant", serif;
   font-weight: 600;
+  text-transform: capitalize;
 }
 section > .container-fluid, footer > .container-fluid{
   padding:5% 7%;

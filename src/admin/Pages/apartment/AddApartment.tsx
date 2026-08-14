@@ -1,4 +1,4 @@
-import { Button, Form, Input, Upload, Select, Switch } from "antd"
+import { Button, Form, Input, Upload } from "antd"
 import { Formik } from "formik"
 import { FlatButton } from "../../../shared/FlatButton";
 import { useState } from "react";
@@ -25,7 +25,11 @@ export const AddApartment = () => {
     cost: Yup.number()
       .transform((value) => (isNaN(value) ? undefined : value))
       .nullable()
-      .required("Reading time is required"),
+      .required("Cost is required"),
+      capacity: Yup.number()
+      .transform((value) => (isNaN(value) ? undefined : value))
+      .nullable()
+      .required("Capacity is required"),
   });
 
   return (
@@ -34,7 +38,7 @@ export const AddApartment = () => {
         <h2>Add New Apartment</h2>
         <Formik
           initialValues={{
-            title: '', category: "", description: "", cost: '', images: []
+            title: '', category: "", description: "", cost: '', images: [], capacity:''
           }}
           validationSchema={validationSchema}
           onSubmit={(values, { resetForm }) => {
@@ -75,7 +79,7 @@ export const AddApartment = () => {
                 validateStatus={formik.errors.description && formik.touched.description ? "error" : ""}
                 help={formik.touched.description && formik.errors.description}
               >
-                <Input
+                <Input.TextArea
                   name="description"
                   value={formik.values.description}
                   onChange={formik.handleChange}
@@ -93,6 +97,21 @@ export const AddApartment = () => {
                   name="cost"
                   type="number"
                   value={formik.values.cost}
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                />
+              </Form.Item>
+
+
+              <Form.Item 
+                label="Capcity of apartment"
+                validateStatus={formik.errors.capacity && formik.touched.capacity ? "error" : ""}
+                help={formik.touched.capacity && formik.errors.capacity}
+              >
+                <Input
+                  name="capacity"
+                  type="number"
+                  value={formik.values.capacity}
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
                 />

@@ -151,6 +151,17 @@ export const SingleAdminApartment = () => {
                 />
               </p>
 
+
+              <p>
+                <strong>Capacity:</strong> {data.capacity}
+
+                <FlatButton
+                  className="btn btnPrimary"
+                  onClick={handleOpenModal}
+                  icon={<EditOutlined />}
+                />
+              </p>
+
               {/* =========================
                   IMAGES COUNT
               ========================== */}
@@ -202,6 +213,7 @@ export const SingleAdminApartment = () => {
             cost={data.cost}
             images={data.images || []}
             _id={data._id}
+            capacity={data.capacity}
           />
         )}
       </div>

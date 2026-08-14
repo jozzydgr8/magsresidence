@@ -25,7 +25,7 @@ type UpdateApartmentProps = {
   title: string;
   description: string;
   cost: number;
-
+  capacity: number,
   images: ApartmentImage[];
 
   _id: string;
@@ -36,6 +36,7 @@ interface ApartmentFormValues {
   description: string;
   cost: string;
   images: UploadFile[];
+  capacity:string;
 }
 
 export const UpdateApartment = ({
@@ -46,9 +47,11 @@ export const UpdateApartment = ({
   cost,
   images,
   _id,
+  capacity,
 }: UpdateApartmentProps) => {
   const [fileList, setFileList] = useState<UploadFile[]>([]);
   const [loading, setLoading] = useState(false);
+  const [imagesChanged, setImagesChanged] = useState(false);
 
   const { updateApartment, deleteApartment } = ApartmentHooks();
 
@@ -68,12 +71,14 @@ export const UpdateApartment = ({
     } else {
       setFileList([]);
     }
+     setImagesChanged(false);
   }, [images]);
 
   const initialValues: ApartmentFormValues = {
     title,
     description,
     cost: String(cost),
+    capacity: String(capacity),
     images: [],
   };
 
@@ -92,6 +97,8 @@ export const UpdateApartment = ({
           await updateApartment({
             values,
             fileList,
+            capacity:String(capacity),
+            imagesChanged,
             title,
             description,
             cost: String(cost),
@@ -135,33 +142,48 @@ export const UpdateApartment = ({
               />
             </Form.Item>
 
+             <Form.Item label="Capacity">
+              <Input
+                name="capacity"
+                type="number"
+                value={formik.values.capacity}
+                onChange={formik.handleChange}
+                placeholder="Apartment capacity"
+              />
+            </Form.Item>
+
             <Form.Item label="Images">
               <Upload
-                listType="picture"
-                fileList={fileList}
-                beforeUpload={() => false}
-                multiple
-                onChange={({ fileList: newFileList }) => {
-                  setFileList(newFileList);
-                  formik.setFieldValue("images", newFileList);
-                }}
-                onRemove={(file) => {
-                  const updatedList = fileList.filter(
-                    (item) => item.uid !== file.uid
-                  );
+              listType="picture"
+              fileList={fileList}
+              beforeUpload={() => false}
+              multiple
+              onChange={({ fileList: newFileList }) => {
+                setFileList(newFileList);
+                setImagesChanged(true);
 
-                  setFileList(updatedList);
-                  formik.setFieldValue("images", updatedList);
+                formik.setFieldValue("images", newFileList);
+              }}
+              onRemove={(file) => {
+                const updatedList = fileList.filter(
+                  (item) => item.uid !== file.uid
+                );
 
-                  return true;
-                }}
-              >
-                <FlatButton
-                  title="Upload Image"
-                  icon={<UploadOutlined />}
-                  className="btn btnSuccess"
-                />
-              </Upload>
+                setFileList(updatedList);
+                setImagesChanged(true);
+
+                formik.setFieldValue("images", updatedList);
+
+                return true;
+              }}
+            >
+              <FlatButton
+                title="Upload Image"
+                icon={<UploadOutlined />}
+                className="btn btnSuccess"
+                type="button"
+              />
+            </Upload>
             </Form.Item>
 
             <div

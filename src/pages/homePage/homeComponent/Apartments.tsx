@@ -1,5 +1,7 @@
+import { NavLink } from "react-router-dom";
 import { UseDataContext } from "../../../context/UseDataContext"
 import { FlatButton } from "../../../shared/FlatButton";
+import {TeamOutlined} from '@ant-design/icons';
 export const Apartments = ()=>{
     const {Apartments} = UseDataContext();
     return(
@@ -17,14 +19,17 @@ export const Apartments = ()=>{
             {
                 Apartments?.map(data=>(
                     <div className="col-md-4 mt-4 animate-up" key={data._id}>
-                        <div className="apartment-card h-100 text-start ">
-                            <div style={{backgroundImage:`url(${data.images[0].url})`,
-                         backgroundSize:'cover', height:'300px', backgroundPosition:'center center', borderTopRightRadius:"10px", borderTopLeftRadius:"10px"}}></div>
-                        <div style={{padding:'30px'}}>
-                            <h3 className="sub-heading">{data.title}</h3>
-                            <p>{data.description}</p>
-                        </div>
-                        </div>
+                        <NavLink to={`/apartment/${data._id}`} >
+                            <div className="apartment-card h-100 text-start ">
+                                <div style={{backgroundImage:`url(${data.images[0].url})`,
+                                backgroundSize:'cover', height:'300px', backgroundPosition:'center center', borderTopRightRadius:"10px", borderTopLeftRadius:"10px"}}></div>
+                                <div style={{padding:'30px'}}>
+                                    <strong className="homeBadge"><TeamOutlined/> 1 - {data.capacity} guests</strong>
+                                    <h3 className="sub-heading">{data.title}</h3>
+                                    <p>{data.description}</p>
+                                </div>
+                            </div>
+                        </NavLink>
                     </div>
                 ))
             }

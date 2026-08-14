@@ -15,6 +15,7 @@ export type Apartment = {
   description: string;
   images: ApartmentImage[];
   cost: number;
+  capacity:number;
   createdAt: string;
   updatedAt: string;
 };

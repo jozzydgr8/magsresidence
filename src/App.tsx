@@ -13,6 +13,7 @@ import { AddApartment } from './admin/Pages/apartment/AddApartment';
 import { GuestRoutes } from './shared/GuestRoutes';
 import Session from './admin/Pages/Session';
 import { SingleAdminApartment } from './admin/Pages/apartment/SingleAdminApartment';
+import { SingleApartment } from './pages/singleApartmentPage/SingleApartment';
 
 
 function App() {
@@ -78,6 +79,9 @@ useEffect(() => {
     <>
     <Route path='/' element={<Layout />}>
       <Route index element={<HomePage />} />
+     
+        <Route path='apartment/:id' element={<SingleApartment/>}/>
+      
 
     </Route>
     <Route path='/admin_jctbdil1$' element={<AdminLayout/>}>

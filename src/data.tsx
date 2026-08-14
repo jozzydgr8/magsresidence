@@ -5,8 +5,14 @@ import {
   SafetyCertificateOutlined,
   SkinOutlined,
   CustomerServiceOutlined,
-  EnvironmentOutlined,
+
   CalendarOutlined,
+ 
+  CloudOutlined,
+  HomeOutlined,
+  CarOutlined,
+  EnvironmentOutlined,
+  ClearOutlined,
 } from "@ant-design/icons";
 
 export const amenities = [
@@ -77,3 +83,31 @@ export     const reason = [
     "description": "We handle the details — utilities, cleaning, maintenance — so you can focus on what brought you here."
   }
 ]
+
+
+export const singleAmenities = [
+  {
+    label: "Fast Wi-Fi",
+    icon: <WifiOutlined />,
+  },
+  {
+    label: "Air conditioning",
+    icon: <CloudOutlined />,
+  },
+  {
+    label: "Full kitchen",
+    icon: <HomeOutlined />,
+  },
+  {
+    label: "Secure parking",
+    icon: <CarOutlined />,
+  },
+  {
+    label: "Private pool",
+    icon: <EnvironmentOutlined />,
+  },
+  {
+    label: "Daily cleaning",
+    icon: <ClearOutlined />,
+  },
+];

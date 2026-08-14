@@ -8,8 +8,8 @@ import { UseAuthContext } from "../../context/UseAuthContext";
 
 type updateprops={
     values:any,
-   
-    title:string, description:string, cost:string, 
+   imagesChanged: boolean,
+    title:string, description:string, cost:string, capacity:string, 
     _id:string,
     fileList: UploadFile<any>[],
     handleCloseModal:()=>void,
@@ -18,7 +18,7 @@ type updateprops={
 
 interface ApartmentFormValues {
   title: string;
-
+  capacity:string;
   description: string;
   cost: string;
   images: UploadFile[];
@@ -43,6 +43,7 @@ export const ApartmentHooks = ()=>{
         formData.append('title', values.title);
         formData.append('description', values.description);
         formData.append('cost',values.cost);
+        formData.append('capacity',values.capacity)
 
         fileList.forEach((file) => {
         if (file.originFileObj) {
@@ -108,49 +109,70 @@ export const ApartmentHooks = ()=>{
         }
     }
 
-
-    const updateApartment = async ({
+const updateApartment = async ({
   handleCloseModal,
   values,
   fileList,
+  imagesChanged,
   setLoading,
   title,
   description,
   cost,
   _id,
+  capacity,
 }: updateprops) => {
   setLoading(true);
 
   try {
     const formData = new FormData();
 
+    let hasChanges = false;
+
+    // Text fields
     if (values.title !== title) {
       formData.append("title", values.title);
+      hasChanges = true;
     }
 
     if (values.description !== description) {
       formData.append("description", values.description);
+      hasChanges = true;
     }
 
     if (values.cost !== String(cost)) {
       formData.append("cost", values.cost);
+      hasChanges = true;
     }
 
-    /*
-     * Only append files that were actually selected/uploaded.
-     * Existing images have no originFileObj.
-     */
-    fileList.forEach((file) => {
-      if (file.originFileObj) {
-        formData.append("images", file.originFileObj);
-      }
-    });
+    if (values.capacity !== String(capacity)) {
+      formData.append("capacity", values.capacity);
+      hasChanges = true;
+    }
 
-    /*
-     * Don't make an API request if nothing changed.
-     * Using Array.from avoids TypeScript iteration issues in older target configs.
-     */
-    if (Array.from(formData.keys()).length === 0) {
+    // Images
+    if (imagesChanged) {
+      hasChanges = true;
+
+      // Existing images that were NOT deleted
+      const existingImages = fileList
+        .filter((file) => !file.originFileObj && file.url)
+        .map((file) => file.uid);
+
+      formData.append(
+        "existingImages",
+        JSON.stringify(existingImages)
+      );
+
+      // New images
+      fileList.forEach((file) => {
+        if (file.originFileObj) {
+          formData.append("images", file.originFileObj);
+        }
+      });
+    }
+
+    // Nothing changed
+    if (!hasChanges) {
       toast.info("No changes were made");
       setLoading(false);
       return;
@@ -168,7 +190,9 @@ export const ApartmentHooks = ()=>{
     );
 
     if (!response.ok) {
-      throw new Error(`Failed to update apartment: ${response.status}`);
+      throw new Error(
+        `Failed to update apartment: ${response.status}`
+      );
     }
 
     const json = await response.json();
@@ -188,6 +212,5 @@ export const ApartmentHooks = ()=>{
     setLoading(false);
   }
 };
-
     return {postApartment, deleteApartment, updateApartment}
 }
