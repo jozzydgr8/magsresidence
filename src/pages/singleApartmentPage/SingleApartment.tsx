@@ -3,6 +3,8 @@ import { UseDataContext } from "../../context/UseDataContext";
 import { ApartmentHero } from "./component/ApartmentHero";
 import { SingleAmenities } from "./component/SingleAmenities";
 import { ApartmentDisplay } from "./component/ApartmentDisplay";
+import { AboutApartment } from "./component/AboutApartment";
+import { Footer } from "../homePage/homeComponent/Footer";
 export const SingleApartment = ()=>{
     const {id} = useParams();
     const {Apartments} = UseDataContext();
@@ -20,6 +22,8 @@ export const SingleApartment = ()=>{
             <ApartmentHero currentApartment={currentApartment}/>
             <SingleAmenities/>
             <ApartmentDisplay images={currentApartment.images}/>
+            <AboutApartment/>
+            <Footer/>
         </>
     )
 }

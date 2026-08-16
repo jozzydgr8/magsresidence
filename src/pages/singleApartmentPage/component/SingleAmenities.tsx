@@ -6,7 +6,7 @@ export const SingleAmenities = ()=>{
             <div className="container-fluid">
                 <div className="row">
                     {singleAmenities.map((data,index)=>(
-                        <div className="col-md-2">
+                        <div className="col-md-2 mb-3">
                             <div className="apartment-card animate-up"style={{padding:'10px'}}>
                                 {data.icon} {data.label}
                             </div>

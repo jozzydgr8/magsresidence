@@ -18,7 +18,7 @@ export const Offering = ()=>{
                     {
                         amenities.map((data, index)=>(
                             <div key={index} className="col-md-3 mb-2 d-flex">
-                                <div className="amenities-content animate-up">
+                                <div className="amenities-content animate-up h-100 w-100">
                                     <data.icon style={iconStyle}/>
                                     <br/><br/>
                                     <h3 className="subheading">{data.title}</h3>
