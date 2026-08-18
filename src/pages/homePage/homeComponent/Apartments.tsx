@@ -1,6 +1,5 @@
 import { NavLink } from "react-router-dom";
 import { UseDataContext } from "../../../context/UseDataContext"
-import { FlatButton } from "../../../shared/FlatButton";
 import {TeamOutlined} from '@ant-design/icons';
 export const Apartments = ()=>{
     const {Apartments} = UseDataContext();
@@ -39,7 +38,7 @@ export const Apartments = ()=>{
             </div>
 
 
-            <FlatButton title="View all apartment" className="animate-up btn btnSuccess mt-4 btn-lg"/>
+
             </div>
 
         </div>

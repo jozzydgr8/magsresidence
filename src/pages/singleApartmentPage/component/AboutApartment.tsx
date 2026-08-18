@@ -1,8 +1,12 @@
 import { amenities } from "../../../data"
 import { ApartmentForm } from "./ApartmentForm"
 import { CalendarDisplay } from "./Calendar.Display"
+import { Apartment } from "../../../types"
 
-export const AboutApartment = ()=>{
+type apartmentProp ={
+    currentApartment:Apartment,
+}
+export const AboutApartment = ({currentApartment}:apartmentProp)=>{
     return(
         <section>
             <div className="container-fluid">
@@ -41,7 +45,7 @@ export const AboutApartment = ()=>{
                     </div>
                     <div className="col-md-4">
                         <div className="apartment-card mt-4">
-                            <ApartmentForm/>
+                            <ApartmentForm capacity = {currentApartment.capacity}/>
                         </div>
                     </div>
                 </div>

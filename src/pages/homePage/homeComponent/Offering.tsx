@@ -1,6 +1,4 @@
 import { amenities } from "../../../data";
-import { FlatButton } from "../../../shared/FlatButton";
-import {RightOutlined} from '@ant-design/icons'
 
 
 const iconStyle={
@@ -29,9 +27,7 @@ export const Offering = ()=>{
                     }
                 </div>
                 <br/>
-                <div className="text-center">
-                    <FlatButton title="Explore All Amenities" className="animate-up borderlessbtn" icon={<RightOutlined/>}/>
-                </div>
+              
             </div>
         </section>
     )
