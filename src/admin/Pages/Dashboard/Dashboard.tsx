@@ -1,4 +1,5 @@
 import { ApartmentListed } from "./dashComponent/ApartmentListed"
+import { BookingListed } from "./dashComponent/BookingListed"
 
 export const Dashboard = ()=>{
     return(
@@ -6,10 +7,13 @@ export const Dashboard = ()=>{
             <div className="container-fluid">
                 <h2 className="subheading">Dashboard</h2>
                 <div className="row">
-                    <div className="col-md-6">
+                    <div className="col-12 mb-4">
                         <div>
                             <ApartmentListed/>
                         </div>
+                    </div>
+                    <div className="col-12">
+                        <BookingListed/>
                     </div>
                 </div>
             </div>

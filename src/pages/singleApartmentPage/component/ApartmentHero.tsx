@@ -1,7 +1,6 @@
-import {useState, useEffect} from 'react';
 import { Apartment } from '../../../types'; 
 import {EnvironmentOutlined, StarFilled} from '@ant-design/icons';
-import { FlatButton } from '../../../shared/FlatButton';
+
 
 type apartmentProp ={
     currentApartment:Apartment,

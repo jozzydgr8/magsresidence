@@ -30,7 +30,7 @@ export const OffcanvasNavbar = () => {
     <nav className="navbar bg-body-tertiary" data-bs-theme="light">
       <div className="container-fluid">
         <NavLink className="navbar-brand" to="/admin_jctbdil1$" >
-          <h2>Mags Residence Dashboard</h2>
+          <h2>Mags Residence</h2>
         </NavLink>
         <button
           className="navbar-toggler"
@@ -50,7 +50,7 @@ export const OffcanvasNavbar = () => {
         >
           <div className="offcanvas-header">
             <h5 className="offcanvas-title" id="offcanvasNavbarLabel">
-              <h2>Mags Residence</h2>
+              Mags Residence
             </h5>
             <button
               type="button"

@@ -43,6 +43,31 @@ function App() {
     
   },[dispatch]);
 
+  //useEffect to fetch bookings
+  useEffect(()=>{
+    const fetchBookings = async ()=>{
+      dispatch({type:'loading', payload:true})
+      try{
+        const response = await fetch('https://magsresidenceserver.vercel.app/bookings',{
+          headers:{
+            'Authorization':`Bearer ${user?.token}`
+          }
+        })
+        if(!response.ok){
+          throw Error('error fetching bookings')
+        }
+        const json = await response.json();
+        console.log('bookings',json);
+        dispatch({type:'getBookings', payload:json})
+      }catch(error){
+        console.error('error fetching booking',error)
+      }finally{
+        dispatch({type:'loading', payload:false})
+      }
+    }
+    fetchBookings();
+  },[dispatch, user])
+
   
   //useffect for authentication
 useEffect(() => {

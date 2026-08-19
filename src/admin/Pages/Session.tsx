@@ -63,6 +63,7 @@ export default function Session() {
     return () => clearInterval(timer);
   }, [cooldown]);
   const navigate = useNavigate()
+  // eslint-disable-next-line
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
   const {signInWithEmailAndPassword, forgotPassword} = AuthHooks();
