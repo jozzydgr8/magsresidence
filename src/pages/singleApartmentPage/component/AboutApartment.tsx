@@ -45,7 +45,7 @@ export const AboutApartment = ({currentApartment}:apartmentProp)=>{
                     </div>
                     <div className="col-md-4">
                         <div className="apartment-card mt-4">
-                            <ApartmentForm capacity = {currentApartment.capacity}/>
+                            <ApartmentForm currentApartment = {currentApartment}/>
                         </div>
                     </div>
                 </div>
