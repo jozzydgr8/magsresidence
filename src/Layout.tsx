@@ -1,6 +1,7 @@
 import { Outlet } from "react-router-dom"
 import { Navbar } from "./shared/Navbar"
 import { useEffect } from "react";
+import ScrollToTop from "./shared/ScrollToTop";
 export const Layout = ()=>{
        //useeffect for animation
    useEffect(()=>{
@@ -48,6 +49,7 @@ export const Layout = ()=>{
   },[]);
     return (
         <>
+            <ScrollToTop/>
             <Navbar/>
             <Outlet/>
         </>

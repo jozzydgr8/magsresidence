@@ -19,6 +19,7 @@ export const SingleApartment = ()=>{
     }
     return(
         <>
+        
             <ApartmentHero currentApartment={currentApartment}/>
             <SingleAmenities />
             <ApartmentDisplay images={currentApartment.images}/>

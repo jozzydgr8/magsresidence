@@ -32,19 +32,21 @@ export const AboutApartment = ({currentApartment}:apartmentProp)=>{
                                            
                                             <strong className="subheading  ">{data.title}</strong>
                                              
-                                            <p className="mt-2">{data.description}</p>
+                                           
                                         </div>
                                     </div>
                                 ))
                             }
                         </div>
-
+                        <h2 className="text-center subheading mt-3" style={{color:'var(--burnished-gold)'}}>Check Availability</h2>
                         <div className="apartment-card mt-3">
-                            <CalendarDisplay/>
+                            <CalendarDisplay currentApartment={currentApartment}/>
                         </div>
                     </div>
                     <div className="col-md-4">
+                         <h2 className="text-center subheading mt-3" style={{color:'var(--burnished-gold)'}}>Book Your Stay</h2>
                         <div className="apartment-card mt-4">
+                            
                             <ApartmentForm currentApartment = {currentApartment}/>
                         </div>
                     </div>

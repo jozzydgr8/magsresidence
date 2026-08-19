@@ -32,24 +32,24 @@ export const Navbar = () => {
               </a>
             </li>
             <li className="nav-item">
-              <a href={`#about`} className="nav-link active">
+              <a href={`#welcome`} className="nav-link active">
                     About us
               </a>
             </li>
             <li className="nav-item">
-              <a href={`#services`} className="nav-link active">
+              <a href={`#apartments`} className="nav-link active">
                     Apartments
               </a>
             </li>
             <li className="nav-item">
-              <a href={`#projects`} className="nav-link active">
+              <a href={`#offering`} className="nav-link active">
                     Amenities
               </a>
             </li>
             
             <li className="nav-item">
            
-                <FlatButton title='Contact' className='btn btnPrimary 'onClick={()=>handleRequest('Hi, I’d like to get a free consultation for a construction project. I’d appreciate some guidance on the best options.')}/>
+                <FlatButton title='Contact' className='btn btnPrimary 'onClick={()=>handleRequest('Hi, I’d like to make an inquiry about staying at Mags Residences. I’d appreciate some guidance on the available apartments, rates, and booking options.')}/>
              
             </li>
 
