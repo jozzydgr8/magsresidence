@@ -53,7 +53,7 @@ export const CtaForm= ()=>{
                                             onBlur={formik.handleBlur}
                                             required/>
                                 </Form.Item>
-                                <FlatButton className="animate-up w-100 btn btn-lg  btnSuccess " title="Message us" icon={<WhatsAppOutlined/>} onClick={formik.handleSubmit}
+                                <FlatButton className=" w-100 btn btn-lg  btnSuccess " title="Message us" icon={<WhatsAppOutlined/>} onClick={formik.handleSubmit}
                                 />
                                 <br/>
                                 <small>We respect your privacy. Your information will only be used to respond to your inquiry.</small>
