@@ -8,7 +8,7 @@ type apartmentProp ={
 export const ApartmentHero = ({currentApartment}:apartmentProp)=>{
     return(
         <section style={{color:"white",minHeight:"80vh",backgroundImage: `
-          linear-gradient(to top, var(--teal) 0%, transparent 50%),
+          linear-gradient(to top, var(--teal) 0%, transparent 200%),
           url(${currentApartment.images[0].url})
         `, backgroundSize:'cover', backgroundRepeat:'no-repeat', backgroundPosition:"center center"}}>
             <div className="container-fluid">

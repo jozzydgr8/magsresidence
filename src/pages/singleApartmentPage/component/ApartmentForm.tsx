@@ -104,25 +104,13 @@ export const ApartmentForm = ({
            */
 
           return (
-            selectedDate.isSame(
-              checkIn,
-              "day"
-            ) ||
-            selectedDate.isSame(
-              checkOut,
-              "day"
-            ) ||
-            (
-              selectedDate.isAfter(
-                checkIn,
-                "day"
-              ) &&
-              selectedDate.isBefore(
-                checkOut,
-                "day"
-              )
-            )
-          );
+          selectedDate.isSame(checkIn, "day") ||
+          (
+            selectedDate.isAfter(checkIn, "day") &&
+            selectedDate.isBefore(checkOut, "day")
+          )
+        );
+
         }
       ) ?? false
     );
@@ -131,28 +119,45 @@ export const ApartmentForm = ({
   // --------------------------------------------------
   // CHECK-IN DISABLED DATES
   // --------------------------------------------------
+  const hasAvailableNightAfter = (date: Dayjs) => {
+  const nextDay = date.startOf("day").add(1, "day");
+
+  return !isDateBooked(nextDay);
+};
+
 
   const disabledCheckInDate = (
-    current: Dayjs | null
-  ) => {
-    if (!current) {
-      return false;
-    }
+  current: Dayjs | null
+) => {
+  if (!current) {
+    return false;
+  }
 
-    // Disable dates before today
-    if (
-      current
-        .startOf("day")
-        .isBefore(
-          dayjs().startOf("day")
-        )
-    ) {
-      return true;
-    }
+  const date = current.startOf("day");
 
-    // Disable booked dates
-    return isDateBooked(current);
-  };
+  // Disable dates before today
+  if (
+    date.isBefore(
+      dayjs().startOf("day")
+    )
+  ) {
+    return true;
+  }
+
+  // Disable dates that are already booked
+  if (isDateBooked(date)) {
+    return true;
+  }
+
+  // A booking must contain at least one night.
+  // Therefore, the following day must be available.
+  if (!hasAvailableNightAfter(date)) {
+    return true;
+  }
+
+  return false;
+};
+
 
   // --------------------------------------------------
   // CHECK-OUT DISABLED DATES
@@ -440,12 +445,23 @@ export const ApartmentForm = ({
       {(formik) => {
         // Keep current Formik values available
         formikValues = formik.values;
+         const nights =
+        formik.values.checkIn &&
+        formik.values.checkOut
+          ? formik.values.checkOut.diff(
+              formik.values.checkIn,
+              "day"
+            )
+          : 0;
 
+      const totalCost =
+      currentApartment.cost * nights;
         return (
           <Form
             layout="vertical"
             onFinish={formik.handleSubmit}
           >
+            <h4 className='subheading mb-4 text-center' style={{color:'var(--burnished-gold)'}}>{currentApartment.title}</h4>
             <div className="row">
                {/* CHECK-IN */}
               {/* -------------------------------- */}
@@ -709,14 +725,21 @@ export const ApartmentForm = ({
               {/* -------------------------------- */}
 
               <h2
-                className="subheading"
-                style={{
-                  color:
-                    "var(--burnished-gold)",
-                }}
-              >
-                ₦{currentApartment.cost}
-              </h2>
+              className="subheading"
+              style={{
+                color: "var(--burnished-gold)",
+              }}
+            >
+              ₦{totalCost === 0 ? currentApartment.cost.toLocaleString() :totalCost.toLocaleString()}
+            </h2>
+
+            {nights > 0 && (
+              <small style={{ color: "gray" }}>
+                {nights} night{nights !== 1 ? "s" : ""} × ₦
+                {currentApartment.cost.toLocaleString()}
+              </small>
+            )}
+
               {/* -------------------------------- */}
              
               {/* PAYMENT BUTTON */}
