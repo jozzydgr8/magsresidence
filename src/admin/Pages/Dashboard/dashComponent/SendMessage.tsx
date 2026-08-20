@@ -21,7 +21,7 @@ export const SendMessage = ({ selectedEmail, isModalOpen, setIsModalOpen }: prop
     console.log(selectedEmail)
   try {
     const response = await fetch(
-      "https://magsresidence.vercel.app/message/send_newsletter",
+      "https://magsresidenceserver.vercel.app/message/send_email",
       {
         method: "POST",
         headers: {

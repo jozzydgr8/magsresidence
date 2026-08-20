@@ -32,17 +32,17 @@ export const Navbar = () => {
               </a>
             </li>
             <li className="nav-item">
-              <a href={`#welcome`} className="nav-link active">
+              <a href={`/#welcome`} className="nav-link active">
                     About us
               </a>
             </li>
             <li className="nav-item">
-              <a href={`#apartments`} className="nav-link active">
+              <a href={`/#apartments`} className="nav-link active">
                     Apartments
               </a>
             </li>
             <li className="nav-item">
-              <a href={`#offering`} className="nav-link active">
+              <a href={`/#offering`} className="nav-link active">
                     Amenities
               </a>
             </li>

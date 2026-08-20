@@ -51,8 +51,8 @@ export const Hero =()=>{
 
                     
                     <div className='heroButton'>
-                    <FlatButton className=" btn btn-xl btnPrimary " title="Book Now"/> 
-                    <FlatButton className=" btn btn-xl btnAlternate " title="View Apartments"/>
+                    <a href='/#apartments'><FlatButton className=" btn btn-xl btnPrimary " title="Book Now"/> </a>
+                    <a href='/#apartments'><FlatButton className=" btn btn-xl btnAlternate " title="View Apartments"/></a>
                     </div>
                 </div>
                 </div>

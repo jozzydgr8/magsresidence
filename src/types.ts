@@ -60,7 +60,7 @@ export interface Booking {
     status: 'paid' | 'refunded';
   };
 
-  status: 'confirmed' | 'cancelled' | 'completed';
+  status: 'confirmed' | 'cancelled' | 'completed' | 'checked-in';
 
   createdAt: string;
   updatedAt: string;
