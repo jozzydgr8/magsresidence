@@ -35,7 +35,7 @@ h1{
   text-transform: capitalize;
 }
 section > .container-fluid, footer > .container-fluid{
-  padding:5% 7%;
+  padding:3% 7%;
 }
 .homeBadge, .homeBadgeParent{
    color: var(--light-gold);

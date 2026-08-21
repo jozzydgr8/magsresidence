@@ -18,13 +18,13 @@ export const Footer = ()=>{
                             Premium serviced apartments offering a comfortable, stylish home away from home for business, leisure, and extended stays.
                         </p>
                         <div  style={{display:'flex', flexDirection:"row", gap:"10px"}}>
-                            <a href="/" target="_blank" rel="noopener noreferrer">
+                            <a href="https://www.facebook.com/share/1DfUK7KcGK/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer">
                                 <FacebookOutlined style={{ padding:"10px", borderRadius:"12px", fontSize: '30px', background: 'rgba(184, 134, 11, 0.2)', color:"#E6C76A" }} />
                             </a>
-                            <a href="/" target="_blank" rel="noopener noreferrer">
+                            <a href="https://wa.me/message/4WNVMK2V5RBZE1" target="_blank" rel="noopener noreferrer">
                                 <WhatsAppOutlined style={{ padding:"10px", borderRadius:"12px", fontSize: '30px', background: 'rgba(184, 134, 11, 0.2)', color:"#E6C76A" }} />
                             </a>
-                            <a href="/" target="_blank" rel="noopener noreferrer">
+                            <a href="https://www.instagram.com/mags_residence?igsh=MXM1aHhvdmEzZ3dwcw%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer">
                                 <InstagramOutlined style={{ padding:"10px", borderRadius:"12px", fontSize: '30px', background: 'rgba(184, 134, 11, 0.2)', color:"#E6C76A" }} />
                             </a>
                         </div>

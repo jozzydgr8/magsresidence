@@ -19,9 +19,9 @@ export const AboutApartment = ({currentApartment}:apartmentProp)=>{
                             Designed to feel like your own place in the city.
                         </h2>
                         <p className="subtopic">
-                            Mags Residence is made for staying a little longer. Warm, understated and quietly considered, with tactile materials, soft linen curtains and a calm neutral palette that gives the space an easy, residential feel. Morning light moves through the room, harbour views open from the balcony, and the sofa invites you to settle in with a book and stay awhile.
+                            Mags Residence is made for staying a little longer. Warm, understated and calm, with soft linen curtains, tactile materials and a neutral palette. Morning light fills the room, harbour views open from the balcony, and the sofa invites you to settle in.
                             <br/><br/>
-                            It’s less like a hotel room, more like a place that’s yours — a slower, lighter home with the city just beyond the glass.
+                            Less like a hotel room, more like a home — with the city just beyond the glass.
                         </p>
                         <br/>
                         <div className="row mt-4">
@@ -30,7 +30,7 @@ export const AboutApartment = ({currentApartment}:apartmentProp)=>{
                                     <div key={index} className="col-6  mb-3">
                                         <div className="apartment-card h-100 w-100">
                                            
-                                            <strong className="subheading  ">{data.title}</strong>
+                                            <b className="subheading  ">{data.title}</b>
                                              
                                            
                                         </div>
