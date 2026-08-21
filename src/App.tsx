@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import {createBrowserRouter, createRoutesFromChildren, Outlet, Route, RouterProvider} from 'react-router-dom';
+import {createBrowserRouter, createRoutesFromChildren, Outlet, Route, RouterProvider, Navigate} from 'react-router-dom';
 import { Layout } from './Layout';
 import { HomePage } from './pages/homePage/HomePage';
 import { ToastContainer } from 'react-toastify';
@@ -107,7 +107,7 @@ useEffect(() => {
      
         <Route path='apartment/:id' element={<SingleApartment/>}/>
       
-
+     <Route path="*" element={<Navigate to="/" replace />} />
     </Route>
     <Route path='/admin_jctbdil1$' element={<AdminLayout/>}>
       <Route index element={<ProtectedRoutes user={user}><Dashboard/></ProtectedRoutes>}/>
@@ -118,6 +118,7 @@ useEffect(() => {
 
 
          <Route path='session' element={<GuestRoutes user={user}><Session/></GuestRoutes>}/>
+          <Route path="*" element={<Navigate to="/" replace />} />
     </Route>
     </>
   ))
