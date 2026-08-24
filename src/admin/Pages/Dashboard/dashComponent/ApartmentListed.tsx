@@ -40,7 +40,7 @@ export const ApartmentListed = ()=>{
         {Apartments?.length===0 && <small style={{color:"gray"}}>apartments uploaded will be here...</small>}
         
         <div>
-            <NavLink to={'/admin_jctbdil1$/apartment/addapartment'}>
+            <NavLink to={'/admin_jctbdil1$/apartments/addapartments'}>
             <FlatButton className=" btn btnPrimary" icon={<PlusOutlined/>} title="Add New apartment"/>
                 
     

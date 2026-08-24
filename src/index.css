@@ -118,11 +118,11 @@ nav .container-fluid{
 
 /* hero-section hero-section hero-section */
 #hero{
-  background: linear-gradient(
+  /* background: linear-gradient(
   to right,
   var(--teal),
   transparent 200% 
-), url('./asset/LivingRoom1.png');
+), url('./asset/LivingRoom1.png'); */
 
 
   background-position: center center;

@@ -8,10 +8,16 @@ export const Apartments = ()=>{
         <section id="apartments">
         <div className="container-fluid">
             <div className="text-center">
-            <p className="homeBadge">Our Apartments</p>
-            <h2 className="sub-heading"style={{color:'var(--teal)'}}>Find Your Perfect Space</h2>
-            <p className=" subtopic">Thoughtfully designed apartments for every kind of stay — from solo business trips to family relocations.</p>
-           
+            <p className="homeBadge">Our Apartments & Amenities</p>
+
+            <h2 className="sub-heading" style={{ color: 'var(--teal)' }}>
+                Everything You Need for a Perfect Stay
+            </h2>
+
+            <p className="subtopic">
+                Explore our comfortable apartments, modern amenities, and thoughtfully designed spaces made for every kind of stay.
+            </p>
+
            
             <div className="row">
 

@@ -1,7 +1,28 @@
 import {StarFilled, TeamOutlined, ClockCircleOutlined, SafetyOutlined} from '@ant-design/icons';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import {FlatButton} from '../../../shared/FlatButton';
+import { backgroundImages } from '../../../data';
 export const Hero =()=>{
+     const [currentIndex, setCurrentIndex] = useState(0);
+       const [fade, setFade] = useState(true);
+
+     useEffect(() => {
+  const interval = setInterval(() => {
+    setFade(false);
+
+    setTimeout(() => {
+      setCurrentIndex((prevIndex) => 
+        (prevIndex + 1) % backgroundImages.length
+      );
+      setFade(true);
+    }, 1000);
+
+  }, 5000);
+
+  return () => clearInterval(interval);
+}, []);
+
+
     useEffect(() => {
     const headerText = document.querySelector('.heroWrite');
     headerText?.classList.add('sectionAnimationLeft');
@@ -16,8 +37,17 @@ export const Hero =()=>{
     heroBadge?.classList.add('sectionAnimationDown');
     }, []);
 
+
+    const currentBackground = backgroundImages[currentIndex].background;
+
     return(
-        <section id="hero">
+        <section id="hero" 
+        style={{
+            backgroundImage: `
+          linear-gradient(to right, var(--teal) 0%, transparent 100%),
+          url(${currentBackground})
+        `,
+        }}>
             <div className="container-fluid">
                 <div className="row">
                     <div className="col-md-8">

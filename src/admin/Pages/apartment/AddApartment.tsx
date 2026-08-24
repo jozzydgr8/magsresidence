@@ -141,6 +141,7 @@ export const AddApartment = () => {
                 title="Add Apartment"
                 className="btn btnPrimary"
                 disabled={loading}
+                type="submit"
               
               />
             </Form>

@@ -33,11 +33,11 @@ export const Footer = ()=>{
                     <div className="col-md-3 mb-2">
                         <h3>Quick Links </h3>
                         <br/>
-                        <a href="/" target="_blank" rel="noopener noreferrer">About Us</a>
-                        <a href="/apartments" target="_blank" rel="noopener noreferrer">Apartments</a>
-                        <a href="/gallery" target="_blank" rel="noopener noreferrer">Amenities</a>
+                        <a href="/#about" >About Us</a>
+                        <a href="/#apartments" >Apartments</a>
+                  
                         <a href="/gallery" target="_blank" rel="noopener noreferrer">Gallery</a>
-                        <a href="/apartments" target="_blank" rel="noopener noreferrer">Rate & Booking</a>
+                        <a href="/#apartments" target="_blank" rel="noopener noreferrer">Rate & Booking</a>
                     </div>
 
 
@@ -45,10 +45,11 @@ export const Footer = ()=>{
                     <div className="col-md-3 mb-2">
                         <h3>More Info</h3>
                         <br/>
-                        <p>Services</p>
+                        <a href="/#apartments" >Amenities</a>
+
                         <p>Guest Reviews</p>
-                        <p>Corporate Bookings</p>
-                        <p onClick={()=>handleRequest('Hello I will likw to make some enquiries about Mag residence')}>Contact Us</p>
+                        
+                        <p onClick={()=>handleRequest('Hello I will like to make some enquiries about Mag residence')}>Contact Us</p>
                     </div>
 
 
