@@ -1,3 +1,4 @@
+import { NavLink } from 'react-router-dom'
 import businessLogo from '../asset/businessLogo.png'
 import { FlatButton } from './FlatButton'
 import { handleRequest } from './handleRequest'
@@ -27,9 +28,9 @@ export const Navbar = () => {
           <ul className="navbar-nav ms-auto">
 
             <li className="nav-item">
-              <a href={`/`} className="nav-link active">
+              <NavLink to={`/`} className="nav-link active">
                    Home
-              </a>
+              </NavLink>
             </li>
             <li className="nav-item">
               <a href={`/#welcome`} className="nav-link active">
@@ -45,6 +46,9 @@ export const Navbar = () => {
               <a href={`/#amenities`} className="nav-link active">
                     Amenities
               </a>
+            </li>
+            <li className='nav-item'>
+              <NavLink to='/gallery' className="nav-link active">Gallery</NavLink>
             </li>
             
             <li className="nav-item">

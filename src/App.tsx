@@ -15,6 +15,7 @@ import Session from './admin/Pages/Session';
 import { SingleAdminApartment } from './admin/Pages/apartment/SingleAdminApartment';
 import { SingleApartment } from './pages/singleApartmentPage/SingleApartment';
 import { Gallery } from './pages/galleryPage/Gallery';
+import { AddGallery } from './admin/Pages/gallery/AddGallery';
 
 
 function App() {
@@ -138,6 +139,9 @@ useEffect(() => {
       <Route path='apartments' element={<ProtectedRoutes user={user}><Outlet/></ProtectedRoutes>}>
         <Route path='addapartments' element={<AddApartment/>} />
         <Route path=':id' element={<SingleAdminApartment/>}/>
+      </Route>
+      <Route path='gallery' element={<ProtectedRoutes user={user}><Outlet/></ProtectedRoutes>}>
+        <Route path='addgallery' element={<AddGallery/>}/>
       </Route>
 
 

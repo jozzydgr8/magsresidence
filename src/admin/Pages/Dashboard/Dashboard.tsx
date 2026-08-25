@@ -1,5 +1,6 @@
 import { ApartmentListed } from "./dashComponent/ApartmentListed"
 import { BookingListed } from "./dashComponent/BookingListed"
+import { GalleriesListed } from "./dashComponent/GalleryListing"
 
 export const Dashboard = ()=>{
     return(
@@ -10,6 +11,11 @@ export const Dashboard = ()=>{
                     <div className="col-12 mb-4">
                         <div>
                             <ApartmentListed/>
+                        </div>
+                    </div>
+                    <div className="col-12 mb-4">
+                        <div>
+                           <GalleriesListed/>
                         </div>
                     </div>
                     <div className="col-12">
