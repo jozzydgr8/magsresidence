@@ -1,9 +1,10 @@
 import { createContext, useReducer } from "react";
-import { Apartment, Booking } from "../types";
+import { Apartment, Booking, Gallery } from "../types";
 
 type stateProps = {
   Apartments: Apartment[] | null;
   Bookings: Booking[] | null;
+  Galleries: Gallery[] | null;
   loading: boolean;
 };
 
@@ -59,6 +60,28 @@ type updateBookingProps = {
   payload: Booking;
 };
 
+// ---------- Gallery Actions ----------
+
+type GalleryProps = {
+  type: "getGalleries";
+  payload: Gallery[];
+};
+
+type addGalleryProps = {
+  type: "addGallery";
+  payload: Gallery;
+};
+
+type deleteGalleryProps = {
+  type: "deleteGallery";
+  payload: string;
+};
+
+type updateGalleryProps = {
+  type: "updateGallery";
+  payload: Gallery;
+};
+
 // ---------- Loading ----------
 
 type loadingProps = {
@@ -66,15 +89,28 @@ type loadingProps = {
   payload: boolean;
 };
 
+// ---------- All Actions ----------
+
 type actionProps =
+  // Apartment actions
   | ApartmentProps
   | addApartmentProps
   | deleteApartmentProps
   | updateApartmentProps
+
+  // Booking actions
   | BookingProps
   | addBookingProps
   | deleteBookingProps
   | updateBookingProps
+
+  // Gallery actions
+  | GalleryProps
+  | addGalleryProps
+  | deleteGalleryProps
+  | updateGalleryProps
+
+  // Loading
   | loadingProps;
 
 // ---------- Initial State ----------
@@ -82,6 +118,7 @@ type actionProps =
 const initialState: stateProps = {
   Apartments: null,
   Bookings: null,
+  Galleries: null,
   loading: false,
 };
 
@@ -94,8 +131,10 @@ const reducer = (
   action: actionProps
 ): stateProps => {
   switch (action.type) {
-
+    // ==========================================
     // Apartments
+    // ==========================================
+
     case "getApartments":
       return {
         ...state,
@@ -132,7 +171,10 @@ const reducer = (
           ) ?? null,
       };
 
+    // ==========================================
     // Bookings
+    // ==========================================
+
     case "getBookings":
       return {
         ...state,
@@ -169,12 +211,59 @@ const reducer = (
           ) ?? null,
       };
 
+    // ==========================================
+    // Galleries
+    // ==========================================
+
+    case "getGalleries":
+      return {
+        ...state,
+        Galleries: action.payload,
+        loading: false,
+      };
+
+    case "addGallery":
+      return {
+        ...state,
+        Galleries: [
+          ...(state.Galleries || []),
+          action.payload,
+        ],
+      };
+
+    case "deleteGallery":
+      return {
+        ...state,
+        Galleries:
+          state.Galleries?.filter(
+            (gallery) => gallery._id !== action.payload
+          ) ?? null,
+      };
+
+    case "updateGallery":
+      return {
+        ...state,
+        Galleries:
+          state.Galleries?.map((gallery) =>
+            gallery._id === action.payload._id
+              ? action.payload
+              : gallery
+          ) ?? null,
+      };
+
+    // ==========================================
     // Loading
+    // ==========================================
+
     case "loading":
       return {
         ...state,
         loading: action.payload,
       };
+
+    // ==========================================
+    // Default
+    // ==========================================
 
     default:
       return state;

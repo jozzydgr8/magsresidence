@@ -14,6 +14,7 @@ import { GuestRoutes } from './shared/GuestRoutes';
 import Session from './admin/Pages/Session';
 import { SingleAdminApartment } from './admin/Pages/apartment/SingleAdminApartment';
 import { SingleApartment } from './pages/singleApartmentPage/SingleApartment';
+import { Gallery } from './pages/galleryPage/Gallery';
 
 
 function App() {
@@ -42,6 +43,28 @@ function App() {
     fetchData()
     
   },[dispatch]);
+
+  //useffect to fetch galleries
+  useEffect(()=>{
+    const fetchGalleries = async ()=>{
+    dispatch({type:'loading', payload:true});
+    try{
+      const response = await fetch('https://magsresidenceserver.vercel.app/gallery');
+      const json = await response.json();
+      if(!response.ok){
+        throw Error('error fetching galleries',json)
+      }
+      dispatch({type:'getGalleries', payload:json});
+      console.log('galleries',json)
+    }
+    catch(error){
+      console.error(error)
+    }finally{
+        dispatch({type:'loading', payload:false})
+      }
+  };
+  fetchGalleries();
+  },[dispatch, user])
 
   //useEffect to fetch bookings
   useEffect(()=>{
@@ -105,7 +128,8 @@ useEffect(() => {
     <Route path='/' element={<Layout />}>
       <Route index element={<HomePage />} />
      
-        <Route path='apartment/:id' element={<SingleApartment/>}/>
+      <Route path='apartment/:id' element={<SingleApartment/>}/>
+      <Route path='gallery' element={<Gallery/>}/>
       
      <Route path="*" element={<Navigate to="/" replace />} />
     </Route>
