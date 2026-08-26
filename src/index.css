@@ -216,13 +216,13 @@ nav .container-fluid{
 
 
  /* offering--offering--offering */
- #offering{
+ #amenities{
   background-color: var(--teal);
   color:white;
  }
  .amenities-content{
   padding:30px;
-  background:var(--medium-teal);
+  background:var(--transparent-teal);
   border: solid 1px var(--light-teal);
   border-radius: 10px;
  }

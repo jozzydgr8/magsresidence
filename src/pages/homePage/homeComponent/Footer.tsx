@@ -6,6 +6,7 @@ import {PhoneOutlined,FacebookOutlined,WhatsAppOutlined,InstagramOutlined,
 import businessLogo from '../../../asset/businessLogo.png'
 import { handleRequest } from '../../../shared/handleRequest';
 import LocationMap from './LocationMap';
+import { NavLink } from 'react-router-dom';
 export const Footer = ()=>{
     return(
         <footer>
@@ -36,8 +37,8 @@ export const Footer = ()=>{
                         <a href="/#about" >About Us</a>
                         <a href="/#apartments" >Apartments</a>
                   
-                        <a href="/gallery" target="_blank" rel="noopener noreferrer">Gallery</a>
-                        <a href="/#apartments" target="_blank" rel="noopener noreferrer">Rate & Booking</a>
+                        <NavLink to="/gallery">Gallery</NavLink>
+                        <a href="/#apartments" >Rate & Booking</a>
                     </div>
 
 
@@ -45,7 +46,7 @@ export const Footer = ()=>{
                     <div className="col-md-3 mb-2">
                         <h3>More Info</h3>
                         <br/>
-                        <a href="/#apartments" >Amenities</a>
+                        <a href="/#amenities" >Amenities</a>
 
                         <p>Guest Reviews</p>
                         

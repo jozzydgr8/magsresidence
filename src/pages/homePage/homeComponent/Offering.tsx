@@ -1,4 +1,6 @@
-import { amenities } from "../../../data";
+
+import { UseDataContext } from "../../../context/UseDataContext";
+
 
 
 const iconStyle={
@@ -6,21 +8,34 @@ const iconStyle={
     background:'var(--transparent-gold)', borderRadius:'5px',
     padding:'10px'};
 export const Offering = ()=>{
+    const {Amenities} = UseDataContext();
     return(
-        <section id="offering" >
+        <section id="amenities" >
             <div className="container-fluid">
-                <p className='homeBadge text-center'>What we offer</p>
-                <h2 className='subheading text-center'>Everything You Need for a Comfortable Stay</h2>
+                <p className="homeBadge text-center">Our Amenities</p>
+
+                <h2 className="subheading text-center">
+                Enjoy Our Premium Amenities
+                </h2>
+
                 <br/>
-                <div className="row">
+                <div className="row justify-content-center g-2">
                     {
-                        amenities.map((data, index)=>(
+                        Amenities && Amenities.map((data, index)=>(
                             <div key={index} className="col-md-3 mb-2 d-flex">
-                                <div className="amenities-content animate-up h-100 w-100">
-                                    <data.icon style={iconStyle}/>
+                                <div className=" animate-up h-100 w-100"
+                                style={{
+                                    backgroundImage:`url(${data.images[0]?.url})`,
+                                    backgroundSize:"cover",
+                                    backgroundRepeat:'no-repeat',backgroundPosition:"center",
+                                    borderRadius:'10px'
+                                }}>
+                                    <div className="amenities-content">
                                     <br/><br/>
                                     <h3 className="subheading">{data.title}</h3>
-                                    <p style={{color:'var(--offWhite)'}}>{data.description}</p>
+                                    {/* <p style={{color:'var(--offWhite)'}}>{data.description}</p> */}
+                                    </div>
+                                    
                                 </div>
                             </div>
                         ))
