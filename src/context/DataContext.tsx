@@ -1,10 +1,11 @@
 import { createContext, useReducer } from "react";
-import { Apartment, Booking, Gallery } from "../types";
+import { Apartment, Booking, Gallery, Amenity } from "../types";
 
 type stateProps = {
   Apartments: Apartment[] | null;
   Bookings: Booking[] | null;
   Galleries: Gallery[] | null;
+  Amenities: Amenity[] | null;
   loading: boolean;
 };
 
@@ -82,6 +83,28 @@ type updateGalleryProps = {
   payload: Gallery;
 };
 
+// ---------- Amenity Actions ----------
+
+type AmenityProps = {
+  type: "getAmenities";
+  payload: Amenity[];
+};
+
+type addAmenityProps = {
+  type: "addAmenity";
+  payload: Amenity;
+};
+
+type deleteAmenityProps = {
+  type: "deleteAmenity";
+  payload: string;
+};
+
+type updateAmenityProps = {
+  type: "updateAmenity";
+  payload: Amenity;
+};
+
 // ---------- Loading ----------
 
 type loadingProps = {
@@ -110,6 +133,12 @@ type actionProps =
   | deleteGalleryProps
   | updateGalleryProps
 
+  // Amenity actions
+  | AmenityProps
+  | addAmenityProps
+  | deleteAmenityProps
+  | updateAmenityProps
+
   // Loading
   | loadingProps;
 
@@ -119,6 +148,7 @@ const initialState: stateProps = {
   Apartments: null,
   Bookings: null,
   Galleries: null,
+  Amenities: null,
   loading: false,
 };
 
@@ -248,6 +278,46 @@ const reducer = (
             gallery._id === action.payload._id
               ? action.payload
               : gallery
+          ) ?? null,
+      };
+
+    // ==========================================
+    // Amenities
+    // ==========================================
+
+    case "getAmenities":
+      return {
+        ...state,
+        Amenities: action.payload,
+        loading: false,
+      };
+
+    case "addAmenity":
+      return {
+        ...state,
+        Amenities: [
+          ...(state.Amenities || []),
+          action.payload,
+        ],
+      };
+
+    case "deleteAmenity":
+      return {
+        ...state,
+        Amenities:
+          state.Amenities?.filter(
+            (amenity) => amenity._id !== action.payload
+          ) ?? null,
+      };
+
+    case "updateAmenity":
+      return {
+        ...state,
+        Amenities:
+          state.Amenities?.map((amenity) =>
+            amenity._id === action.payload._id
+              ? action.payload
+              : amenity
           ) ?? null,
       };
 

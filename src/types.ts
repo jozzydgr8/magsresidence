@@ -75,3 +75,19 @@ export interface Gallery {
   updatedAt: string;
 }
 
+export interface AmenityImage {
+  _id: string;
+  url: string;
+  public_id: string;
+}
+
+export interface Amenity {
+  _id: string;
+  title: string;
+  description: string;
+  images: AmenityImage[];
+  createdAt: string;
+  updatedAt: string;
+}
+
+

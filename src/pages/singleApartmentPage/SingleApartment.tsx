@@ -20,9 +20,10 @@ export const SingleApartment = ()=>{
         <>
         
             <ApartmentHero currentApartment={currentApartment}/>
+            <ApartmentDisplay images={currentApartment.images}/>
             <AboutApartment currentApartment={currentApartment}/>
           
-            <ApartmentDisplay images={currentApartment.images}/>
+            
             
             <Footer/>
         </>

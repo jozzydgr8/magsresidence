@@ -116,7 +116,7 @@ export default function Session() {
               Login
             </Title>
             <Text type="secondary" style={{ fontSize: "14px" }}>
-              welcome to Seun Ogunsanya admin!
+              welcome to Mags residence admin!
             </Text>
 
             <br />

@@ -16,6 +16,8 @@ import { SingleAdminApartment } from './admin/Pages/apartment/SingleAdminApartme
 import { SingleApartment } from './pages/singleApartmentPage/SingleApartment';
 import { Gallery } from './pages/galleryPage/Gallery';
 import { AddGallery } from './admin/Pages/gallery/AddGallery';
+import { SingleAdminAmenity } from './admin/Pages/amenity/singleAdminAmenity';
+import { AddAmenity } from './admin/Pages/amenity/addAmenity';
 
 
 function App() {
@@ -65,7 +67,27 @@ function App() {
       }
   };
   fetchGalleries();
-  },[dispatch, user])
+  },[dispatch, user]);
+
+  //useEffect to detch amenitites
+  useEffect(()=>{
+    const fetchAmenities = async ()=>{
+      try{
+        const response = await fetch('https://magsresidenceserver.vercel.app/amenity');
+        const json = await response.json();
+        if(!response.ok){
+          throw Error ('error fetching amenities', json);
+        }
+        dispatch({type:"getAmenities", payload:json});
+        console.log('amenities', json);
+      }catch(error){
+        console.error(error)
+      }finally{
+        dispatch({type:'loading', payload:false});
+      }
+    }
+    fetchAmenities()
+  },[dispatch])
 
   //useEffect to fetch bookings
   useEffect(()=>{
@@ -142,6 +164,10 @@ useEffect(() => {
       </Route>
       <Route path='gallery' element={<ProtectedRoutes user={user}><Outlet/></ProtectedRoutes>}>
         <Route path='addgallery' element={<AddGallery/>}/>
+      </Route>
+      <Route path='amenities' element={<ProtectedRoutes user={user}><Outlet/></ProtectedRoutes>} >
+        <Route path='addamenity' element={<AddAmenity/>}/>
+        <Route path=':id' element={<SingleAdminAmenity/>}/>
       </Route>
 
 
