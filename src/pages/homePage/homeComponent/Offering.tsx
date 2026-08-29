@@ -22,7 +22,7 @@ export const Offering = ()=>{
                 <div className="row justify-content-center g-2">
                     {
                         Amenities && Amenities.map((data, index)=>(
-                            <div key={index} className="col-md-3 mb-2 d-flex">
+                            <div key={index} className="col-md-6 mb-2 d-flex">
                                 <div className=" animate-up h-100 w-100"
                                 style={{
                                     backgroundImage:`url(${data.images[0]?.url})`,
@@ -30,7 +30,7 @@ export const Offering = ()=>{
                                     backgroundRepeat:'no-repeat',backgroundPosition:"center",
                                     borderRadius:'10px'
                                 }}>
-                                    <div className="amenities-content">
+                                    <div className="amenities-content h-100 w-100">
                                     <br/><br/>
                                     <h3 className="subheading">{data.title}</h3>
                                     {/* <p style={{color:'var(--offWhite)'}}>{data.description}</p> */}

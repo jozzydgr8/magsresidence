@@ -34,7 +34,7 @@ export const Footer = ()=>{
                     <div className="col-md-3 mb-2">
                         <h3>Quick Links </h3>
                         <br/>
-                        <a href="/#about" >About Us</a>
+                        <a href="/#welcome" >About Us</a>
                         <a href="/#apartments" >Apartments</a>
                   
                         <NavLink to="/gallery">Gallery</NavLink>
@@ -47,8 +47,8 @@ export const Footer = ()=>{
                         <h3>More Info</h3>
                         <br/>
                         <a href="/#amenities" >Amenities</a>
-
-                        <p>Guest Reviews</p>
+                        <a href='https://www.google.com/search?sca_esv=f184692387443025&cs=0&output=search&q=Mags+Residence&ludocid=2454026462084985104&lsig=AB86z5WtLVKnbO94dBlA0RHkPp3q&sa=X&ved=2ahUKEwjY183Kt8aWAxXuhv0HHT7iFCMQj9IGegQIExAG&biw=1366&bih=641&dpr=1#lrd=0x1041afbe8b4070f9:0x220e7410b5fbf110,1,,,,' target='_blank' rel='noreferrer noopener'>Guest Reviews</a>
+             
                         
                         <p onClick={()=>handleRequest('Hello I will like to make some enquiries about Mag residence')}>Contact Us</p>
                     </div>
@@ -58,7 +58,17 @@ export const Footer = ()=>{
                         <h3>Contact</h3>
                         <br/>
                         <p><PhoneOutlined style={{fontSize:"20px", color:"#008080", paddingRight:"10px"}} />  +234 806 2326 630</p>
-                        <p><MailOutlined style={{fontSize:"20px", color:"#008080", paddingRight:"10px"}} />  info@magresidence.com</p>
+                       <a href="mailto:magsresidence@gmail.com">
+                        <MailOutlined
+                            style={{
+                            fontSize: "20px",
+                            color: "#008080",
+                            paddingRight: "10px",
+                            }}
+                        />
+                        info@magresidence.com
+                        </a>
+
                         <p><ClockCircleOutlined style={{fontSize:"20px", color:"#008080", paddingRight:"10px"}}/> 24/7 Guest Support</p>
                         <p><EnvironmentOutlined style={{fontSize:"20px", color:"#008080", paddingRight:"10px"}}/> No.172B Niyi street, Osubi, Warri, Delta State</p>
                         

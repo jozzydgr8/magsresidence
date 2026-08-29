@@ -1,29 +1,56 @@
-import {StarFilled, TeamOutlined, ClockCircleOutlined, SafetyOutlined} from '@ant-design/icons';
+import {
+  StarFilled,
+  TeamOutlined,
+  ClockCircleOutlined,
+  SafetyOutlined,
+} from '@ant-design/icons';
 import { useEffect, useState } from 'react';
-import {FlatButton} from '../../../shared/FlatButton';
-import { backgroundImages } from '../../../data';
-export const Hero =()=>{
-     const [currentIndex, setCurrentIndex] = useState(0);
-       const [fade, setFade] = useState(true);
+import { FlatButton } from '../../../shared/FlatButton';
+import { backgroundImages as defaultBackgroundImages } from '../../../data';
+import { UseDataContext } from '../../../context/UseDataContext';
 
-     useEffect(() => {
-  const interval = setInterval(() => {
-    setFade(false);
+export const Hero = () => {
+  const { Galleries } = UseDataContext();
+  const galleryItems = Galleries ?? [];
 
-    setTimeout(() => {
-      setCurrentIndex((prevIndex) => 
-        (prevIndex + 1) % backgroundImages.length
-      );
-      setFade(true);
-    }, 1000);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [fade, setFade] = useState(true);
 
-  }, 5000);
+  // Use database galleries if available,
+  // otherwise use the default hardcoded images.
+  const backgroundImages =
+    galleryItems.length > 0
+      ? galleryItems.map((gallery) => ({
+          background: gallery.image_url,
+        }))
+      : defaultBackgroundImages;
 
-  return () => clearInterval(interval);
-}, []);
+  useEffect(() => {
+    // Reset index if the current index is no longer valid
+    setCurrentIndex((prevIndex) =>
+      prevIndex >= backgroundImages.length ? 0 : prevIndex
+    );
+  }, [backgroundImages.length]);
 
+  useEffect(() => {
+    if (backgroundImages.length <= 1) return;
 
-    useEffect(() => {
+    const interval = setInterval(() => {
+      setFade(false);
+
+      setTimeout(() => {
+        setCurrentIndex((prevIndex) => {
+          return (prevIndex + 1) % backgroundImages.length;
+        });
+
+        setFade(true);
+      }, 1000);
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, [backgroundImages.length]);
+
+  useEffect(() => {
     const headerText = document.querySelector('.heroWrite');
     headerText?.classList.add('sectionAnimationLeft');
 
@@ -35,71 +62,92 @@ export const Hero =()=>{
 
     const heroBadge = document.querySelector('.heroBadge');
     heroBadge?.classList.add('sectionAnimationDown');
-    }, []);
+  }, []);
 
+  const currentBackground =
+    backgroundImages[currentIndex]?.background;
 
-    const currentBackground = backgroundImages[currentIndex].background;
-
-    return(
-        <section id="hero" 
-        style={{
-            backgroundImage: `
+  return (
+    <section
+      id="hero"
+      className={fade ? 'fade-in' : 'fade-out'}
+      style={{
+        backgroundImage: `
           linear-gradient(to right, var(--teal) 0%, transparent 100%),
           url(${currentBackground})
         `,
-        }}>
-            <div className="container-fluid">
-                <div className="row">
-                    <div className="col-md-8">
-                    <div className=' heroBadge homeBadgeParent'><StarFilled /> <StarFilled /> <StarFilled /> <StarFilled /> <StarFilled />  Premium Serviced Apartment
-                     </div>
-                     <br/>
-                    <h1>
-                        A <span style={{ color: 'var(--burnished-gold)' }}>Home Of</span><br/>
-                        Comfort
-                    </h1>
-                    <br/>
-                    <p className='subtopic heroWrite'>
-                        Fully furnished serviced apartments designed for comfort and
-                         convenience. Whether for business, leisure, or an extended stay
-                          — arrive, settle in, and feel at home.
-                    </p>
-                    <div className='row heroBottom'>
-                        <div className="col-md-4 col-sm-6 mb-2 ">
-                            <small style={{display:"flex", gap:'12px'}}><SafetyOutlined/> 24/7 Guest Support</small>
-                        </div>
-                        <div className="col-md-4 col-sm-6 mb-2 ">
-                            <small style={{display:"flex", gap:'12px'}}><ClockCircleOutlined/> Flexible Stays</small>
-                        </div>
-                        <div className="col-md-4 col-sm-6 mb-2 ">
-                            <small style={{display:"flex", gap:'12px'}}><TeamOutlined/> 200+ Happy Guests</small>
-                        </div>
-                        
-
-                    </div>
-                    <br/>
-
-                    
-                    <div className='heroButton'>
-                    <a href='/#apartments'><FlatButton className=" btn btn-xl btnPrimary " title="Book Now"/> </a>
-                    <a href='/#apartments'><FlatButton className=" btn btn-xl btnAlternate " title="View Apartments"/></a>
-                    </div>
-                </div>
-                </div>
-
-
-
-
-
-
-
-
-
-
-                
+      }}
+    >
+      <div className="container-fluid">
+        <div className="row">
+          <div className="col-md-8">
+            <div className="heroBadge homeBadgeParent">
+              <StarFilled />
+              <StarFilled />
+              <StarFilled />
+              <StarFilled />
+              <StarFilled /> Premium Serviced Apartment
             </div>
 
-            
-        </section>
-    )
-}
+            <br />
+
+            <h1>
+              A <span style={{ color: 'var(--burnished-gold)' }}>Home Of</span>
+              <br />
+              Comfort
+            </h1>
+
+            <br />
+
+            <p className="subtopic heroWrite">
+              Fully furnished serviced apartments designed for comfort and
+              convenience. Whether for business, leisure, or an extended stay
+              — arrive, settle in, and feel at home.
+            </p>
+
+            <div className="row heroBottom">
+              <div className="col-md-4 col-sm-6 mb-2">
+                <small style={{ display: 'flex', gap: '12px' }}>
+                  <SafetyOutlined />
+                  24/7 Guest Support
+                </small>
+              </div>
+
+              <div className="col-md-4 col-sm-6 mb-2">
+                <small style={{ display: 'flex', gap: '12px' }}>
+                  <ClockCircleOutlined />
+                  Flexible Stays
+                </small>
+              </div>
+
+              <div className="col-md-4 col-sm-6 mb-2">
+                <small style={{ display: 'flex', gap: '12px' }}>
+                  <TeamOutlined />
+                  200+ Happy Guests
+                </small>
+              </div>
+            </div>
+
+            <br />
+
+            <div className="heroButton">
+              <a href="/#apartments">
+                <FlatButton
+                  className="btn btn-xl btnPrimary"
+                  title="Book Now"
+                />
+              </a>
+
+              <a href="/#apartments">
+                <FlatButton
+                  className="btn btn-xl btnAlternate"
+                  title="View Apartments"
+                />
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};

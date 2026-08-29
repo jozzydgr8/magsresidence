@@ -14,9 +14,11 @@ import {
   EnvironmentOutlined,
   ClearOutlined,
 } from "@ant-design/icons";
+
 import firstBackground from './asset/LivingRoom1.png';
 import secondBackground from './asset/livingRoom2.png';
 import thirdBackground from './asset/room2.jpg';
+import fourthBackground from './asset/room1.jpg';
 
 export const backgroundImages =[
   {
