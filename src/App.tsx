@@ -18,6 +18,7 @@ import { Gallery } from './pages/galleryPage/Gallery';
 import { AddGallery } from './admin/Pages/gallery/AddGallery';
 import { SingleAdminAmenity } from './admin/Pages/amenity/singleAdminAmenity';
 import { AddAmenity } from './admin/Pages/amenity/addAmenity';
+import { Amenity } from './pages/amenitypage/Amenity';
 
 
 function App() {
@@ -152,6 +153,7 @@ useEffect(() => {
       <Route index element={<HomePage />} />
      
       <Route path='apartment/:id' element={<SingleApartment/>}/>
+      <Route path='amenity/:id' element={<Amenity/>}/>
       <Route path='gallery' element={<Gallery/>}/>
       
      <Route path="*" element={<Navigate to="/" replace />} />

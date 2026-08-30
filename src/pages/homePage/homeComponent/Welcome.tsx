@@ -48,8 +48,7 @@ export const Welcome = ()=>{
                                     </div>
                                 </div>
                             </div>
-                            <br/>
-                            <FlatButton className='borderlessbtn animate-up' title="Learn More About Us" icon={<RightOutlined />}/>
+                           
                         </div>
                     </div>
                 </div>

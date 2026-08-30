@@ -8,10 +8,25 @@ type apartmentProp ={
 }
 export const AboutApartment = ({currentApartment}:apartmentProp)=>{
     return(
-        <section>
+        <section id="book">
             <div className="container-fluid">
                 <div className="row">
                     <div className="col-md-8">
+                        
+                        
+                        <h2 className="text-center subheading mt-3" style={{color:'var(--burnished-gold)'}}>Check Availability</h2>
+                        <div className="apartment-card mt-3">
+                            <CalendarDisplay currentApartment={currentApartment}/>
+                        </div>
+                    </div>
+                    <div className="col-md-4">
+                         <h2 className="text-center subheading mt-3" style={{color:'var(--burnished-gold)'}}>Book Your Stay</h2>
+                        <div className="apartment-card mt-4">
+                            
+                            <ApartmentForm currentApartment = {currentApartment}/>
+                        </div>
+                    </div>
+                    <div className="col-md-8 mt-4">
                         <span className="homeBadge">
                             About the residence
                         </span>
@@ -37,17 +52,6 @@ export const AboutApartment = ({currentApartment}:apartmentProp)=>{
                                     </div>
                                 ))
                             }
-                        </div>
-                        <h2 className="text-center subheading mt-3" style={{color:'var(--burnished-gold)'}}>Check Availability</h2>
-                        <div className="apartment-card mt-3">
-                            <CalendarDisplay currentApartment={currentApartment}/>
-                        </div>
-                    </div>
-                    <div className="col-md-4">
-                         <h2 className="text-center subheading mt-3" style={{color:'var(--burnished-gold)'}}>Book Your Stay</h2>
-                        <div className="apartment-card mt-4">
-                            
-                            <ApartmentForm currentApartment = {currentApartment}/>
                         </div>
                     </div>
                 </div>

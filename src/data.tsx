@@ -5,20 +5,26 @@ import {
   SafetyCertificateOutlined,
   SkinOutlined,
   CustomerServiceOutlined,
-
+  ThunderboltOutlined,
   CalendarOutlined,
- 
+  PoweroffOutlined,
+  ShopOutlined,
+  PlayCircleOutlined,
+  SafetyOutlined,
   CloudOutlined,
   HomeOutlined,
   CarOutlined,
   EnvironmentOutlined,
   ClearOutlined,
+  SmileOutlined,
+  HeartOutlined,
+  DesktopOutlined
 } from "@ant-design/icons";
 
 import firstBackground from './asset/LivingRoom1.png';
 import secondBackground from './asset/livingRoom2.png';
 import thirdBackground from './asset/room2.jpg';
-import fourthBackground from './asset/room1.jpg';
+
 
 export const backgroundImages =[
   {
@@ -29,7 +35,8 @@ export const backgroundImages =[
   },
   {
     background:thirdBackground
-  }
+  },
+  
 ]
 
 export const amenities = [
@@ -126,5 +133,68 @@ export const singleAmenities = [
   {
     label: "Daily cleaning",
     icon: <ClearOutlined />,
+  },
+];
+
+export const features = [
+  {
+    label: "24-Hour Power Supply",
+    icon: <ThunderboltOutlined />,
+  },
+  {
+    label: "Fast Wi-Fi",
+    icon: <WifiOutlined />,
+  },
+  {
+    label: "Inverter",
+    icon: <ThunderboltOutlined />,
+  },
+  {
+    label: "Spacious Balcony",
+    icon: <HomeOutlined />,
+  },
+  {
+    label: "Standby Generator",
+    icon: <PoweroffOutlined />,
+  },
+  {
+    label: "Laundry Service on Demand",
+    icon: <ClearOutlined />,
+  },
+  {
+    label: "Close to Government Lodges",
+    icon: <EnvironmentOutlined />,
+  },
+  {
+    label: "24-Hour Security Patrol",
+    icon: <SafetyOutlined />,
+  },
+  {
+    label: "En-Suite Rooms",
+    icon: <HomeOutlined />,
+  },
+  {
+    label: "Cozy Bedding",
+    icon: <ShopOutlined />,
+  },
+  {
+    label: "Netflix",
+    icon: <PlayCircleOutlined />,
+  },
+  {
+    label: "Smart TVs",
+    icon: <DesktopOutlined />,
+  },
+  {
+    label: "Prime Location",
+    icon: <EnvironmentOutlined />,
+  },
+  {
+    label: "Close to Fun Centers",
+    icon: <SmileOutlined />,
+  },
+  {
+    label: "Hosted With Love",
+    icon: <HeartOutlined />,
   },
 ];

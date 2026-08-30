@@ -1,4 +1,5 @@
 
+import { NavLink } from "react-router-dom";
 import { UseDataContext } from "../../../context/UseDataContext";
 
 
@@ -23,7 +24,7 @@ export const Offering = ()=>{
                     {
                         Amenities && Amenities.map((data, index)=>(
                             <div key={index} className="col-md-6 mb-2 d-flex">
-                                <div className=" animate-up h-100 w-100"
+                                <NavLink to={`/amenity/${data._id}`} className=" animate-up h-100 w-100"
                                 style={{
                                     backgroundImage:`url(${data.images[0]?.url})`,
                                     backgroundSize:"cover",
@@ -36,7 +37,7 @@ export const Offering = ()=>{
                                     {/* <p style={{color:'var(--offWhite)'}}>{data.description}</p> */}
                                     </div>
                                     
-                                </div>
+                                </NavLink>
                             </div>
                         ))
                     }

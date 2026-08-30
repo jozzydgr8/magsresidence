@@ -1,6 +1,8 @@
 import { Outlet } from "react-router-dom"
 import { Navbar } from "./shared/Navbar"
 import { useEffect } from "react";
+import { FlatButton } from "./shared/FlatButton";
+import { handleRequest } from "./shared/handleRequest";
 import ScrollToTop from "./shared/ScrollToTop";
 export const Layout = ()=>{
        //useeffect for animation
@@ -52,6 +54,23 @@ export const Layout = ()=>{
             <ScrollToTop/>
             <Navbar/>
             <Outlet/>
+             <FlatButton
+          className="whatsappIcon borderlessbtn"
+          onClick={() =>
+            handleRequest(
+            "Hi Mags Residence! 👋 I’m interested in booking a stay with you. I’d love to learn more about your available rooms, rates, amenities, and what’s included. Looking forward to hearing from you! 🏡✨"
+          )
+          }
+        >
+          <>
+          <span className="chatText">Chat us now</span>
+
+          <img
+            src="https://cdn-icons-png.flaticon.com/128/3670/3670051.png"
+            alt="Chat with BilingualChule"
+          />
+          </>
+        </FlatButton>
         </>
     )
 }

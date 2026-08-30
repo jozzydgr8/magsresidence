@@ -221,14 +221,24 @@ nav .container-fluid{
   color:white;
  }
  .amenities-content{
-  padding:30px;
-  background:var(--transparent-teal);
-  border: solid 1px var(--light-teal);
-  border-radius: 10px;
-  min-height: 450px;
-  display: flex;
+   background:var(--transparent-teal);
+   border: solid 1px var(--light-teal);
+   min-height: 450px;
+    display: flex;
   flex-direction: column;
   justify-content: flex-end;
+ }
+ .amenities-content, .features-content{
+  padding:30px;
+ 
+  border-radius: 10px;
+  
+ 
+ }
+ .features-content{
+    box-shadow: 0 2px 8px var(--secondary);
+    background-color: var(--teal);
+    color: white;
  }
  @media (max-width:750px) {
   .amenities-content{
@@ -298,6 +308,65 @@ footer h3{
   }
 } 
 
+
+
+.whatsappIcon {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+
+.whatsappIcon img {
+  width: 80px;
+  height: 80px;
+}
+
+/* Chat us now bubble */
+.chatText {
+  background: #25D366;
+  color: white;
+  padding: 8px 14px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 600;
+  white-space: nowrap;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Small arrow pointing toward WhatsApp icon */
+.chatText::after {
+  content: "";
+  position: absolute;
+  right: -6px;
+  top: 50%;
+  transform: translateY(-50%);
+  border-width: 6px 0 6px 6px;
+  border-style: solid;
+  border-color: transparent transparent transparent #25D366;
+}
+
+@media (max-width: 750px) {
+  .whatsappIcon img {
+    width: 50px;
+    height: 50px;
+  }
+
+  .chatText {
+    font-size: 12px;
+    padding: 6px 10px;
+  }
+
+  .whatsappIcon {
+    bottom: 15px;
+    right: 15px;
+    gap: 7px;
+  }
+}
 
 /* animation animation animation animation animation animation */
 .sectionAnimationLeft{
