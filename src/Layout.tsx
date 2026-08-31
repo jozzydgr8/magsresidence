@@ -5,50 +5,80 @@ import { FlatButton } from "./shared/FlatButton";
 import { handleRequest } from "./shared/handleRequest";
 import ScrollToTop from "./shared/ScrollToTop";
 export const Layout = ()=>{
-       //useeffect for animation
-   useEffect(()=>{
-    const animation = ()=>{
-      var leftAnimate = document.querySelectorAll('.animate-left');
-      var rightAnimate = document.querySelectorAll('.animate-right');
-      var downAnimate = document.querySelectorAll('.animate-down');
-      var upAnimate = document.querySelectorAll('.animate-up');
+  //useEffect for animation
+useEffect(() => {
+  const animation = () => {
+    const leftAnimate =
+      document.querySelectorAll(".animate-left");
 
-      var windowHeight = window.innerHeight;
-      rightAnimate.forEach(container=>{
-        var containerPosition = container.getBoundingClientRect().top;
+    const rightAnimate =
+      document.querySelectorAll(".animate-right");
 
-        if(containerPosition < windowHeight){
-          container.classList.add('sectionAnimationRight')
-        }
+    const downAnimate =
+      document.querySelectorAll(".animate-down");
 
-      })
-      leftAnimate.forEach(container=>{
-        var containerPosition = container.getBoundingClientRect().top;
+    const upAnimate =
+      document.querySelectorAll(".animate-up");
 
-        if(containerPosition < windowHeight){
-          container.classList.add('sectionAnimationLeft')
-        }
+    const windowHeight = window.innerHeight;
 
-      })
-      upAnimate.forEach(container=>{
-        var containerPosition = container.getBoundingClientRect().top;
+    rightAnimate.forEach((container) => {
+      const containerPosition =
+        container.getBoundingClientRect().top;
 
-        if(containerPosition < windowHeight){
-          container.classList.add('sectionAnimationUp')
-        }
+      if (containerPosition < windowHeight) {
+        container.classList.add(
+          "sectionAnimationRight"
+        );
+      }
+    });
 
-      })
-      downAnimate.forEach(container=>{
-        var containerPosition = container.getBoundingClientRect().top;
+    leftAnimate.forEach((container) => {
+      const containerPosition =
+        container.getBoundingClientRect().top;
 
-        if(containerPosition < windowHeight){
-          container.classList.add('sectionAnimationDown')
-        }
+      if (containerPosition < windowHeight) {
+        container.classList.add(
+          "sectionAnimationLeft"
+        );
+      }
+    });
 
-      })
-    }
-    window.addEventListener('scroll', animation);
-  },[]);
+    upAnimate.forEach((container) => {
+      const containerPosition =
+        container.getBoundingClientRect().top;
+
+      if (containerPosition < windowHeight) {
+        container.classList.add(
+          "sectionAnimationUp"
+        );
+      }
+    });
+
+    downAnimate.forEach((container) => {
+      const containerPosition =
+        container.getBoundingClientRect().top;
+
+      if (containerPosition < windowHeight) {
+        container.classList.add(
+          "sectionAnimationDown"
+        );
+      }
+    });
+  };
+
+  // Check elements immediately when the page opens
+  animation();
+
+  // Continue checking while scrolling
+  window.addEventListener("scroll", animation);
+
+  // Cleanup when navigating to another page
+  return () => {
+    window.removeEventListener("scroll", animation);
+  };
+}, []);
+
     return (
         <>
             <ScrollToTop/>

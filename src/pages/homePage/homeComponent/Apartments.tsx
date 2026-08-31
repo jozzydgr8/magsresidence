@@ -26,7 +26,7 @@ export const Apartments = ()=>{
             {
                 Apartments?.map(data=>(
                     <div className="col-md-4 mt-4 animate-up " key={data._id}>
-                        <NavLink to={`/apartment/${data._id}`}>
+                        <NavLink to={`/apartment/${data._id}/#book`}>
                         <div className="home-apartment-card h-100 text-start d-flex flex-column">
 
                             <div

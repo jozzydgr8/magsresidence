@@ -8,9 +8,7 @@ import { AvailabilityHooks } from "../../../Hooks/AvailabilityHooks";
 export const AvailabilityListed = () => {
   const { AvailabilityBlocks } = UseDataContext();
 
-  const {
-    deleteAvailabilityBlock,
-  } = AvailabilityHooks();
+  const { deleteAvailabilityBlock } = AvailabilityHooks();
 
   return (
     <>
@@ -18,68 +16,71 @@ export const AvailabilityListed = () => {
           AVAILABILITY BLOCKS
       ========================== */}
 
-      <div>
+      <div className="row">
+
         {AvailabilityBlocks &&
           AvailabilityBlocks.map((block) => (
             <div
               key={block._id}
-              className={styles.apartmentcontainer}
+              className="col-md-4"
             >
-              {/* =========================
-                  APARTMENT
-              ========================== */}
+              <div className={styles.apartmentcontainer}>
 
-              <strong>
-                Apartment: {block.apartment}
-              </strong>
+                {/* =========================
+                    APARTMENT
+                ========================== */}
 
-              {/* =========================
-                  CHECK IN
-              ========================== */}
+                <strong>
+                  Apartment: {block.apartment.title}
+                </strong>
 
-              <div>
-                <small>
-                  Check-in:{" "}
-                  {new Date(block.checkIn).toLocaleDateString()}
-                </small>
-              </div>
+                {/* =========================
+                    CHECK IN
+                ========================== */}
 
-              {/* =========================
-                  CHECK OUT
-              ========================== */}
+                <div>
+                  <small>
+                    Check-in:{" "}
+                    {new Date(
+                      block.checkIn
+                    ).toLocaleDateString()}
+                  </small>
+                </div>
 
-              <div>
-                <small>
-                  Check-out:{" "}
-                  {new Date(block.checkOut).toLocaleDateString()}
-                </small>
-              </div>
+                {/* =========================
+                    CHECK OUT
+                ========================== */}
 
-              {/* =========================
-                  ACTIONS
-              ========================== */}
+                <div>
+                  <small>
+                    Check-out:{" "}
+                    {new Date(
+                      block.checkOut
+                    ).toLocaleDateString()}
+                  </small>
+                </div>
 
-              <div>
-                <NavLink
-                  to={`/admin_jctbdil1$/availability/${block._id}`}
-                >
+                {/* =========================
+                    DELETE
+                ========================== */}
+
+                <div>
                   <FlatButton
-                    title="View Block"
-                    className="btn btnPrimary"
+                    title="Delete"
+                    icon={<DeleteOutlined />}
+                    className="btn btn-danger"
+                    onClick={() =>
+                      deleteAvailabilityBlock(
+                        block._id
+                      )
+                    }
                   />
-                </NavLink>
+                </div>
 
-                <FlatButton
-                  title="Delete"
-                  icon={<DeleteOutlined />}
-                  className="btn btnDanger"
-                  onClick={() =>
-                    deleteAvailabilityBlock(block._id)
-                  }
-                />
               </div>
             </div>
           ))}
+
       </div>
 
       {/* =========================

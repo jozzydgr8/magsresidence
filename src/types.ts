@@ -92,12 +92,27 @@ export interface Amenity {
 
 export interface AvailabilityBlock {
   _id: string;
-  apartment: string;
+
+  apartment: {
+    _id: string;
+    title: string;
+    description: string;
+    images: {
+      url: string;
+      public_id: string;
+    }[];
+    cost: number;
+    capacity: number;
+    createdAt: string;
+    updatedAt: string;
+  };
+
   checkIn: string;
   checkOut: string;
   createdAt: string;
   updatedAt: string;
 }
+
 
 
 
