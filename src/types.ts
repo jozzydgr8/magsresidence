@@ -90,4 +90,14 @@ export interface Amenity {
   updatedAt: string;
 }
 
+export interface AvailabilityBlock {
+  _id: string;
+  apartment: string;
+  checkIn: string;
+  checkOut: string;
+  createdAt: string;
+  updatedAt: string;
+}
+
+
 

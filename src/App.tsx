@@ -19,6 +19,7 @@ import { AddGallery } from './admin/Pages/gallery/AddGallery';
 import { SingleAdminAmenity } from './admin/Pages/amenity/singleAdminAmenity';
 import { AddAmenity } from './admin/Pages/amenity/addAmenity';
 import { Amenity } from './pages/amenitypage/Amenity';
+import { AddAvailability } from './admin/Pages/availability/AddAvailability';
 
 
 function App() {
@@ -115,6 +116,32 @@ function App() {
     fetchBookings();
   },[dispatch, user])
 
+  //useffect to fetch availabilityBlock
+   
+  useEffect(()=>{
+    const fetchAvailabilty = async ()=>{
+      dispatch({type:'loading', payload:true})
+      try{
+        const response = await fetch('https://magsresidenceserver.vercel.app/availability',{
+          headers:{
+            'Authorization':`Bearer ${user?.token}`
+          }
+        })
+        if(!response.ok){
+          throw Error('error fetching bookings')
+        }
+        const json = await response.json();
+        console.log('availability',json);
+        dispatch({type:'getAvailabilityBlocks', payload:json})
+      }catch(error){
+        console.error('error fetching booking',error)
+      }finally{
+        dispatch({type:'loading', payload:false})
+      }
+    }
+    fetchAvailabilty();
+  },[dispatch, user])
+
   
   //useffect for authentication
 useEffect(() => {
@@ -171,6 +198,11 @@ useEffect(() => {
         <Route path='addamenity' element={<AddAmenity/>}/>
         <Route path=':id' element={<SingleAdminAmenity/>}/>
       </Route>
+
+      <Route path='availability' element={<ProtectedRoutes user={user}><Outlet/></ProtectedRoutes>}>
+        <Route path='add' element={<AddAvailability/>}/>
+      </Route>
+
 
 
          <Route path='session' element={<GuestRoutes user={user}><Session/></GuestRoutes>}/>

@@ -1,11 +1,18 @@
 import { createContext, useReducer } from "react";
-import { Apartment, Booking, Gallery, Amenity } from "../types";
+import {
+  Apartment,
+  Booking,
+  Gallery,
+  Amenity,
+  AvailabilityBlock,
+} from "../types";
 
 type stateProps = {
   Apartments: Apartment[] | null;
   Bookings: Booking[] | null;
   Galleries: Gallery[] | null;
   Amenities: Amenity[] | null;
+  AvailabilityBlocks: AvailabilityBlock[] | null;
   loading: boolean;
 };
 
@@ -105,6 +112,28 @@ type updateAmenityProps = {
   payload: Amenity;
 };
 
+// ---------- Availability Block Actions ----------
+
+type AvailabilityBlockProps = {
+  type: "getAvailabilityBlocks";
+  payload: AvailabilityBlock[];
+};
+
+type addAvailabilityBlockProps = {
+  type: "addAvailabilityBlock";
+  payload: AvailabilityBlock;
+};
+
+type deleteAvailabilityBlockProps = {
+  type: "deleteAvailabilityBlock";
+  payload: string;
+};
+
+type updateAvailabilityBlockProps = {
+  type: "updateAvailabilityBlock";
+  payload: AvailabilityBlock;
+};
+
 // ---------- Loading ----------
 
 type loadingProps = {
@@ -139,6 +168,12 @@ type actionProps =
   | deleteAmenityProps
   | updateAmenityProps
 
+  // Availability block actions
+  | AvailabilityBlockProps
+  | addAvailabilityBlockProps
+  | deleteAvailabilityBlockProps
+  | updateAvailabilityBlockProps
+
   // Loading
   | loadingProps;
 
@@ -149,6 +184,7 @@ const initialState: stateProps = {
   Bookings: null,
   Galleries: null,
   Amenities: null,
+  AvailabilityBlocks: null,
   loading: false,
 };
 
@@ -318,6 +354,46 @@ const reducer = (
             amenity._id === action.payload._id
               ? action.payload
               : amenity
+          ) ?? null,
+      };
+
+    // ==========================================
+    // Availability Blocks
+    // ==========================================
+
+    case "getAvailabilityBlocks":
+      return {
+        ...state,
+        AvailabilityBlocks: action.payload,
+        loading: false,
+      };
+
+    case "addAvailabilityBlock":
+      return {
+        ...state,
+        AvailabilityBlocks: [
+          ...(state.AvailabilityBlocks || []),
+          action.payload,
+        ],
+      };
+
+    case "deleteAvailabilityBlock":
+      return {
+        ...state,
+        AvailabilityBlocks:
+          state.AvailabilityBlocks?.filter(
+            (block) => block._id !== action.payload
+          ) ?? null,
+      };
+
+    case "updateAvailabilityBlock":
+      return {
+        ...state,
+        AvailabilityBlocks:
+          state.AvailabilityBlocks?.map((block) =>
+            block._id === action.payload._id
+              ? action.payload
+              : block
           ) ?? null,
       };
 
